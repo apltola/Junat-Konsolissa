@@ -11,9 +11,12 @@ public class Main {
 	// write your code here
 
         haeLyhenne();
+
+
+
     }
 
-    private static void haeLyhenne() {
+    public static void haeLyhenne() {
         Scanner lukija = new Scanner(System.in);
         System.out.println("Kerro asema: ");
         String asema = lukija.nextLine();
