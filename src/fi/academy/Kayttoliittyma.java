@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class Kayttoliittyma {
     private Scanner lukija;
+    private Elina elina;
 
     public Kayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
+        this.elina = new Elina();
     }
 
     public void kayta(){
@@ -29,7 +31,7 @@ public class Kayttoliittyma {
                     break;
 
                 case 1:
-                    haeReitti();
+                    this.elina.haeReitti();
 
                     break;
 
@@ -41,14 +43,14 @@ public class Kayttoliittyma {
         }
     }
 
-    private void haeReitti(){
-        System.out.println();
-        System.out.print("Anna lähtöpaikka: ");
-        String mista = this.lukija.nextLine();
-
-        System.out.print("Anna pääteasema: ");
-        String minne = this.lukija.nextLine();
-    }
+//    private void haeReitti(){
+//        System.out.println();
+//        System.out.print("Anna lähtöpaikka: ");
+//        String mista = this.lukija.nextLine();
+//
+//        System.out.print("Anna pääteasema: ");
+//        String minne = this.lukija.nextLine();
+//    }
 
     private void haeLahtevat(){
 

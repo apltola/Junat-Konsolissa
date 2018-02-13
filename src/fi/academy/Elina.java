@@ -16,10 +16,10 @@ public class Elina {
     // reittihaun toteuttaminen: junien etsiminen lähtö- ja määräaeman perusteella
 
     public static void main(String[] args) {
-        haeReitti();
+        //haeReitti();
     }
 
-    private static void lueJunanJSONData(String mista, String minne) {
+    private void lueJunanJSONData(String mista, String minne) {
         String baseurl = "https://rata.digitraffic.fi/api/v1";
         try {
             URL url = new URL(baseurl+"/live-trains/station/" + mista + "/" + minne);
@@ -35,8 +35,8 @@ public class Elina {
                 int vikaAika = junat.get(i).getTimeTableRows().size()-1;
 
                 System.out.print(junat.get(i).getTrainType() + junat.get(i).getTrainNumber());
-                System.out.print(" " + junat.get(i).getTimeTableRows().get(0).getScheduledTime().substring(11,16));
-                System.out.println(" - " + junat.get(i).getTimeTableRows().get(vikaAika).getScheduledTime().substring(11,16));
+                System.out.print(" Lähtee: " + junat.get(i).getTimeTableRows().get(0).getScheduledTime().substring(11,16));
+                System.out.println(" Saapuu: " + junat.get(i).getTimeTableRows().get(vikaAika).getScheduledTime().substring(11,16));
             }
 
         } catch (Exception ex) {
@@ -44,8 +44,9 @@ public class Elina {
         }
     }
 
-    private static void haeReitti(){
+    public void haeReitti(){
         Scanner lukija = new Scanner(System.in);
+        System.out.println();
         System.out.print("Anna lähtöpaikka: ");
         String mista = haeLyhenne(lukija.nextLine());
 
@@ -53,10 +54,11 @@ public class Elina {
         String minne = haeLyhenne(lukija.nextLine());
 
         System.out.println(mista + " - " + minne);
+        System.out.println("Ladataan junia...");
         lueJunanJSONData(mista, minne);
     }
 
-    private static String haeLyhenne(String asema) {
+    private String haeLyhenne(String asema) {
         String tiedosto = "src/fi/academy/asemienlyhenteet.txt";
         try (FileReader fr = new FileReader(tiedosto);
              BufferedReader in = new BufferedReader(fr)) {
