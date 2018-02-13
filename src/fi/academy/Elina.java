@@ -29,14 +29,14 @@ public class Elina {
             // System.out.println(junat.get(0).getTrainNumber());
             // Seuraavaa varten on toteutettava fi.academy.TimeTableRow luokka:
             // System.out.println(junat.get(0).getTimeTableRows().get(0).getScheduledTime());
-            System.out.println("");
             //System.out.println(junat.get(0));
             for (int i = 0; i < junat.size(); i++) {
                 int vikaAika = junat.get(i).getTimeTableRows().size()-1;
 
-                System.out.print(junat.get(i).getTrainType() + junat.get(i).getTrainNumber());
-                System.out.print(" Lähtee: " + junat.get(i).getTimeTableRows().get(0).getScheduledTime().substring(11,16));
-                System.out.println(" Saapuu: " + junat.get(i).getTimeTableRows().get(vikaAika).getScheduledTime().substring(11,16));
+                String tyyppi = junat.get(i).getTrainType() + junat.get(i).getTrainNumber();
+                String lahtoaika = junat.get(i).getTimeTableRows().get(0).getScheduledTime().substring(11,16);
+                String saapumisaika = junat.get(i).getTimeTableRows().get(vikaAika).getScheduledTime().substring(11,16);
+                System.out.printf("%-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika);
             }
 
         } catch (Exception ex) {
@@ -53,8 +53,9 @@ public class Elina {
         System.out.print("Anna pääteasema: ");
         String minne = haeLyhenne(lukija.nextLine());
 
-        System.out.println(mista + " - " + minne);
         System.out.println("Ladataan junia...");
+        System.out.println();
+        System.out.printf("%-10s %-10s %-10s \n", " ", mista, minne);
         lueJunanJSONData(mista, minne);
     }
 
