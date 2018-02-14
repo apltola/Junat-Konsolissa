@@ -73,24 +73,9 @@ public class Hakija {
         Scanner lukija = new Scanner(System.in);            // käyttäjän valitsemalta asemalta
         System.out.println();
         System.out.print("Anna lähtöpaikka: ");
-        String mista;
-        while (true) {
-            if (lukija.hasNextLine()) {
-                mista = haeAsema(lukija.nextLine());
 
-                if (mista.equals("VIRHE")) {
-                    System.out.println("Asemaa ei löydy!");
-                    System.out.print("Anna lähtöpaikka: ");
-                    continue;
-                } else {
-                    break;
-                }
-            } else {
-                System.out.println("Tyhjä syöte!");
-                System.out.print("Anna lähtöpaikka: ");
-                continue;
-            }
-        }
+
+        String mista = ihanSama(lukija);
 
         String juna="Juna";
         String lahto="Lähtee";
@@ -110,23 +95,7 @@ public class Hakija {
         System.out.print("Anna lähtöpaikka: ");
         String mista;
 
-        while (true) {
-            if (lukija.hasNextLine()) {
-                mista = haeAsema(lukija.nextLine());
-
-                if (mista.equals("VIRHE")) {
-                    System.out.println("Asemaa ei löydy!");
-                    System.out.print("Anna lähtöpaikka: ");
-                    continue;
-                } else {
-                    break;
-                }
-            } else {
-                System.out.println("Tyhjä syöte!");
-                System.out.print("Anna lähtöpaikka: ");
-                continue;
-            }
-        }
+        mista = ihanSama(lukija);
 
         String mistaPitka = haeAsema(mista);
 
@@ -160,6 +129,28 @@ public class Hakija {
         System.out.printf("%-10s %-10s %-10s \n", "Juna", mistaPitka, minnePitka);
 
         lueMistaMinne(mista, minne, lahtoAika);
+    }
+
+    private String ihanSama(Scanner lukija) {
+        String mista;
+        while (true) {
+            if (lukija.hasNextLine()) {
+                mista = haeAsema(lukija.nextLine());
+
+                if (mista.equals("VIRHE")) {
+                    System.out.println("Asemaa ei löydy!");
+                    System.out.print("Anna lähtöpaikka: ");
+                    continue;
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println("Tyhjä syöte!");
+                System.out.print("Anna lähtöpaikka: ");
+                continue;
+            }
+        }
+        return mista;
     }
 
     public String haeAsema(String asema) {
