@@ -47,7 +47,6 @@ public class Hakija {
             ObjectMapper mapper = new ObjectMapper();
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junat = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
-
             List<Juna> uusiLista =
                     junat.stream()
                             .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(0).getScheduledTime()))
