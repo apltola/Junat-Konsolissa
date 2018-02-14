@@ -20,6 +20,8 @@ public class Joni {
         //haeAsemanPerusteella();
     }
 
+}
+
 //    public void haeAsemanPerusteella() {             // haetaan seuraavaksi lähtevää junaa
 //        Scanner lukija = new Scanner(System.in);            // käyttäjän valitsemalta asemalta
 //        System.out.println();
@@ -108,4 +110,4 @@ public class Joni {
 //
 //
 //    }
-}
+
