@@ -33,7 +33,7 @@ public class Kayttoliittyma {
 
             switch (komento){
                 case 0:
-                    System.out.println("\nTervetuloa käyttämään sovellusta uudelleen!");
+                    System.out.println("\nKiitos ja tervetuloa uudelleen!");
                     quit = true;
                     break;
 
