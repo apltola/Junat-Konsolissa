@@ -25,6 +25,8 @@ public class Juna {
     private String station;
     private String nextStation;
 
+
+
     public String getNextStation() {
         return nextStation;
     }
