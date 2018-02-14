@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,8 +21,7 @@ public class Milla  extends Hakija{
 
     public void haeNumeronPerusteella() {
 
-        //String junanNumero = "169";
-
+        //System.out.println("Klo: " + new Date().toString().substring(11, 16));
 
         Scanner lukija = new Scanner(System.in);
         System.out.print("\nAnna junan numero: ");
@@ -45,8 +45,10 @@ public class Milla  extends Hakija{
                     List<Juna> junaUusiLista = mapperUusi.readValue(urlAsemat, millanUusi);
                     String nykyinenAsema = haeAsema(junaUusiLista.get(0).getStation());
                     if (nykyinenAsema.equals("VIRHE")) { nykyinenAsema = junaUusiLista.get(0).getStation();}
+                    if (junaUusiLista.get(0).getStation() == null) {nykyinenAsema = " ";}
                     String seuraavaAsema = haeAsema(junaUusiLista.get(0).getNextStation());
                    if (seuraavaAsema.equals("VIRHE")) { seuraavaAsema = junaUusiLista.get(0).getNextStation();}
+                    if (junaUusiLista.get(0).getNextStation() == null) {seuraavaAsema = " ";}
                     String asemat = "\nVälillä: " + nykyinenAsema + " - "
                             + seuraavaAsema;
                     System.out.println(asemat);
@@ -56,5 +58,3 @@ public class Milla  extends Hakija{
             System.out.println(e); }
 
 }}
-//Date d = new Date();
-//            d.getTime();
