@@ -45,28 +45,36 @@ public class Hakija {
     }
 
     public void lueJunatLahtoasemanPerusteella(String mista) {
+        Calendar kalenteri = new GregorianCalendar();
+
+
         String baseurl = "https://rata.digitraffic.fi/api/v1";
         try {
             URL url = new URL(baseurl+"/live-trains/station/" + mista + "?departing_trains=200&include_nonstopping=false");
             ObjectMapper mapper = new ObjectMapper();
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junat = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
-            List<Juna> uusiLista =
-                    junat.stream()
+
+            List<Juna> ajallaRajatut = junat.stream()
+                    .filter(juna -> juna.getTimeTableRows().get(0).getScheduledTime().after(kalenteri.getTime()))
+                    .collect(Collectors.toCollection(ArrayList::new));
+
+            List<Juna> rajatutJarjestyksessa =
+                    ajallaRajatut.stream()
                             .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(0).getScheduledTime()))
                             .collect(Collectors.toCollection(ArrayList::new));
 
-            for (int i = 0; i < uusiLista.size(); i++) {
-                int vikaAika = uusiLista.get(i).getTimeTableRows().size()-1;
+            for (int i = 0; i < rajatutJarjestyksessa.size(); i++) {
+                int vikaAika = rajatutJarjestyksessa.get(i).getTimeTableRows().size()-1;
 
                 String tyyppi;
-                if (uusiLista.get(i).getTrainCategory().equals("Commuter")) {
-                    tyyppi = uusiLista.get(i).getCommuterLineID();
+                if (rajatutJarjestyksessa.get(i).getTrainCategory().equals("Commuter")) {
+                    tyyppi = rajatutJarjestyksessa.get(i).getCommuterLineID();
                 } else {
-                    tyyppi = uusiLista.get(i).getTrainType() + uusiLista.get(i).getTrainNumber();
+                    tyyppi = rajatutJarjestyksessa.get(i).getTrainType() + rajatutJarjestyksessa.get(i).getTrainNumber();
                 }
-                String lahtoaika = uusiLista.get(i).getTimeTableRows().get(0).getScheduledTime().toString().substring(11,16);
-                String maaranpaa = uusiLista.get(i).getTimeTableRows().get(vikaAika).getStationShortCode();
+                String lahtoaika = rajatutJarjestyksessa.get(i).getTimeTableRows().get(0).getScheduledTime().toString().substring(11,16);
+                String maaranpaa = rajatutJarjestyksessa.get(i).getTimeTableRows().get(vikaAika).getStationShortCode();
 
                 System.out.printf("%-10s %-10s %-10s  \n", tyyppi, lahtoaika, haeAsema(maaranpaa));
             }
