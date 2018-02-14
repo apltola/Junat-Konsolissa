@@ -5,10 +5,12 @@ import java.util.Scanner;
 public class Kayttoliittyma {
     private Scanner lukija;
     private Hakija hakijaOlio;
+    private Milla milla;
 
     public Kayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
         this.hakijaOlio = new Hakija();
+        this.milla = new Milla();
     }
 
     public void kayta(){
@@ -47,6 +49,7 @@ public class Kayttoliittyma {
                     break;
 
                 case 4:
+                    this.milla.haeNumeronPerusteella();
                     break;
 
                 case 5:

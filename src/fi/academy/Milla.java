@@ -42,8 +42,8 @@ public class Milla  extends Hakija{
                     ObjectMapper mapperUusi = new ObjectMapper();
                     CollectionType millanUusi = mapperUusi.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
                     List<Juna> junaUusiLista = mapperUusi.readValue(urlAsemat, millanUusi);
-                    String asemat = "Välillä: " + haePitkaAsema(junaUusiLista.get(0).getStation()) + " - "
-                            + haePitkaAsema(junaUusiLista.get(0).getNextStation());
+                    String asemat = "Välillä: " + haeAsema(junaUusiLista.get(0).getStation()) + " - "
+                            + haeAsema(junaUusiLista.get(0).getNextStation());
                     System.out.println(asemat);
                 } catch(IOException f){
                     System.out.println(f); } }

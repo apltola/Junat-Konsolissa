@@ -79,7 +79,7 @@ public class DatanLukija {
         List<TimeTableRow> aikataulu = ekaJuna.getTimeTableRows();
 
         aikataulu.stream()
-                .map(rivi-> rivi.getScheduledTime().substring(11, 16))
+                .map(rivi-> rivi.getScheduledTime().toString().substring(11, 16))
                 .forEach(System.out::println);
 
     }

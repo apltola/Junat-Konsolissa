@@ -25,8 +25,8 @@ public class Hakija {
 
             for (int i = 0; i < junat.size(); i++) {
                 String tyyppi = junat.get(i).getTrainType() + junat.get(i).getTrainNumber();
-                String lahtoaika = junat.get(i).getTimeTableRows().get(0).getScheduledTime().substring(11,16);
-                String saapumisaika = junat.get(i).getTimeTableRows().get(haeIndeksi(junat, minne)).getScheduledTime().substring(11,16);
+                String lahtoaika = junat.get(i).getTimeTableRows().get(0).getScheduledTime().toString().substring(11,16);
+                String saapumisaika = junat.get(i).getTimeTableRows().get(haeIndeksi(junat, minne)).getScheduledTime().toString().substring(11,16);
                 System.out.printf("%-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika);
             }
         } catch (Exception ex) {
@@ -50,7 +50,7 @@ public class Hakija {
             for (int i = 0; i < uusiLista.size(); i++) {
                 int vikaAika = uusiLista.get(i).getTimeTableRows().size()-1;
 
-                String lahtoaika = uusiLista.get(i).getTimeTableRows().get(0).getScheduledTime().substring(11,16);
+                String lahtoaika = uusiLista.get(i).getTimeTableRows().get(0).getScheduledTime().toString().substring(11,16);
                 String tyyppi = uusiLista.get(i).getTrainType() + uusiLista.get(i).getTrainNumber();
                 String maaranpaa = uusiLista.get(i).getTimeTableRows().get(vikaAika).getStationShortCode();
 
