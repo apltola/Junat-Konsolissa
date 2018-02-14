@@ -16,8 +16,7 @@ public class Hakija {
         Calendar kalenteri = new GregorianCalendar();
         kalenteri.set(Calendar.HOUR_OF_DAY, Integer.parseInt(aika.substring(0, 2)));
         kalenteri.set(Calendar.MINUTE, Integer.parseInt(aika.substring(3, 5)));
-
-
+        
         String baseurl = "https://rata.digitraffic.fi/api/v1";
         try {
             URL url = new URL(baseurl+"/live-trains/station/" + mista + "/" + minne);
@@ -30,7 +29,12 @@ public class Hakija {
                     .collect(Collectors.toCollection(ArrayList::new));
 
             for (int i = 0; i < ajallaRajatut.size(); i++) {
-                String tyyppi = ajallaRajatut.get(i).getTrainType() + ajallaRajatut.get(i).getTrainNumber();
+                String tyyppi;
+                if (junat.get(i).getTrainCategory().equals("Commuter")) {
+                    tyyppi = junat.get(i).getCommuterLineID();
+                } else {
+                    tyyppi = junat.get(i).getTrainType() + junat.get(i).getTrainNumber();
+                }
                 String lahtoaika = ajallaRajatut.get(i).getTimeTableRows().get(0).getScheduledTime().toString().substring(11,16);
                 String saapumisaika = ajallaRajatut.get(i).getTimeTableRows().get(haeIndeksi(junat, minne)).getScheduledTime().toString().substring(11,16);
                 System.out.printf("%-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika);
@@ -56,10 +60,13 @@ public class Hakija {
             for (int i = 0; i < uusiLista.size(); i++) {
                 int vikaAika = uusiLista.get(i).getTimeTableRows().size()-1;
 
-
-
+                String tyyppi;
+                if (uusiLista.get(i).getTrainCategory().equals("Commuter")) {
+                    tyyppi = uusiLista.get(i).getCommuterLineID();
+                } else {
+                    tyyppi = uusiLista.get(i).getTrainType() + uusiLista.get(i).getTrainNumber();
+                }
                 String lahtoaika = uusiLista.get(i).getTimeTableRows().get(0).getScheduledTime().toString().substring(11,16);
-                String tyyppi = uusiLista.get(i).getTrainType() + uusiLista.get(i).getTrainNumber();
                 String maaranpaa = uusiLista.get(i).getTimeTableRows().get(vikaAika).getStationShortCode();
 
                 System.out.printf("%-10s %-10s %-10s  \n", tyyppi, lahtoaika, haeAsema(maaranpaa));
@@ -74,8 +81,7 @@ public class Hakija {
         System.out.println();
         System.out.print("Anna lähtöpaikka: ");
 
-
-        String mista = ihanSama(lukija);
+        String mista = virheSyotteidenKasittely(lukija, "Anna lähtöasema: ");
 
         String juna="Juna";
         String lahto="Lähtee";
@@ -83,55 +89,32 @@ public class Hakija {
 
         System.out.println("\nLadataan junia...");
         System.out.println();
-        //System.out.println("Juna "+ " \tLähtee " + " \tMääräasema");
         System.out.printf("%-10s %-10s %-10s \n", juna, lahto, mihin  );
         lueJunatLahtoasemanPerusteella(mista);
-
     }
 
     public void haeReitti(){
         Scanner lukija = new Scanner(System.in);
         System.out.println();
         System.out.print("Anna lähtöpaikka: ");
-        String mista;
-
-        mista = ihanSama(lukija);
-
+        String mista = virheSyotteidenKasittely(lukija, "Anna lähtöasema: ");
         String mistaPitka = haeAsema(mista);
 
         System.out.print("Anna pääteasema: ");
-        String minne;
-
-        while (true) {
-            if (lukija.hasNextLine()) {
-                minne = haeAsema(lukija.nextLine());
-
-                if (minne.equals("VIRHE")) {
-                    System.out.println("Asemaa ei löydy!");
-                    System.out.print("Anna pääteasema: ");
-                    continue;
-                } else {
-                    break;
-                }
-            } else {
-                System.out.println("Tyhjä syöte!");
-                System.out.print("Anna pääteasema: ");
-                continue;
-            }
-        }
+        String minne = virheSyotteidenKasittely(lukija, "Anna pääteasema: ");
         String minnePitka = haeAsema(minne);
 
         System.out.print("Anna lähtoaika (muodossa hh:mm): ");
         String lahtoAika = lukija.nextLine();
 
-        System.out.println("Ladataan junia...");
+        System.out.println("\nLadataan junia...");
         System.out.println();
         System.out.printf("%-10s %-10s %-10s \n", "Juna", mistaPitka, minnePitka);
 
         lueMistaMinne(mista, minne, lahtoAika);
     }
 
-    private String ihanSama(Scanner lukija) {
+    private String virheSyotteidenKasittely(Scanner lukija, String viesti) {
         String mista;
         while (true) {
             if (lukija.hasNextLine()) {
@@ -139,14 +122,16 @@ public class Hakija {
 
                 if (mista.equals("VIRHE")) {
                     System.out.println("Asemaa ei löydy!");
-                    System.out.print("Anna lähtöpaikka: ");
+                    System.out.println();
+                    System.out.print(viesti);
                     continue;
                 } else {
                     break;
                 }
             } else {
                 System.out.println("Tyhjä syöte!");
-                System.out.print("Anna lähtöpaikka: ");
+                System.out.println();
+                System.out.print(viesti);
                 continue;
             }
         }
