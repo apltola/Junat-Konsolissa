@@ -3,17 +3,30 @@ package fi.academy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 //Milla koodaa junien hakua junan numeron perusteella
-public class Milla {
+public class Milla  extends Hakija{
 
     public static void main(String[] args) {
+        new Milla().haeNumeronPerusteella();
+    }
 
-        String junanNumero = "143";
+    public void haeNumeronPerusteella() {
+
+        //String junanNumero = "169";
+
+
+        Scanner lukija = new Scanner(System.in);
+        System.out.print("Anna junan numero: ");
+        String junanNumero = lukija.nextLine();
+
         String alkuUrl = "https://rata.digitraffic.fi/api/v1/";
         try {
             URL urlLiike = new URL(alkuUrl + "trains/latest/" + junanNumero);
@@ -29,17 +42,12 @@ public class Milla {
                     ObjectMapper mapperUusi = new ObjectMapper();
                     CollectionType millanUusi = mapperUusi.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
                     List<Juna> junaUusiLista = mapperUusi.readValue(urlAsemat, millanUusi);
-                    String asemat = "Välillä: " + junaLista.get(0).getStation() + " - " + junaLista.get(0).getNextStation();
+                    String asemat = "Välillä: " + haePitkaAsema(junaUusiLista.get(0).getStation()) + " - "
+                            + haePitkaAsema(junaUusiLista.get(0).getNextStation());
                     System.out.println(asemat);
                 } catch(IOException f){
-                    System.out.println(f);
-            }
-        }
-
+                    System.out.println(f); } }
         } catch (IOException e) {
-            System.out.println(e);
-        }
+            System.out.println(e); }
 
-//Miten kysytään:
-    }
-}
+}}
