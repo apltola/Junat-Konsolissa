@@ -28,7 +28,12 @@ public class Hakija {
                     .filter(juna -> juna.getTimeTableRows().get(0).getScheduledTime().after(kalenteri.getTime()))
                     .collect(Collectors.toCollection(ArrayList::new));
 
-            for (int i = 0; i < ajallaRajatut.size(); i++) {
+            int lukumaara = 10;
+            if (ajallaRajatut.size() < lukumaara) {
+                lukumaara = ajallaRajatut.size();
+            }
+
+            for (int i = 0; i < lukumaara; i++) {
                 String tyyppi;
                 if (junat.get(i).getTrainCategory().equals("Commuter")) {
                     tyyppi = junat.get(i).getCommuterLineID();
@@ -64,7 +69,12 @@ public class Hakija {
                             .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(0).getScheduledTime()))
                             .collect(Collectors.toCollection(ArrayList::new));
 
-            for (int i = 0; i < rajatutJarjestyksessa.size(); i++) {
+            int lukumaara = 10;
+            if (rajatutJarjestyksessa.size() < lukumaara) {
+                lukumaara = rajatutJarjestyksessa.size();
+            }
+
+            for (int i = 0; i < lukumaara; i++) {
                 int vikaAika = rajatutJarjestyksessa.get(i).getTimeTableRows().size()-1;
 
                 String tyyppi;
@@ -131,7 +141,7 @@ public class Hakija {
                     System.out.println("Asemaa ei löydy!");
                     System.out.println();
                     System.out.print(viesti);
-                    continue;
+                    break;
                 } else {
                     break;
                 }
