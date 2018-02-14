@@ -23,18 +23,12 @@ public class Hakija {
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junat = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
 
-
             for (int i = 0; i < junat.size(); i++) {
-                int vikaAika = junat.get(i).getTimeTableRows().size()-1;
-
                 String tyyppi = junat.get(i).getTrainType() + junat.get(i).getTrainNumber();
                 String lahtoaika = junat.get(i).getTimeTableRows().get(0).getScheduledTime().substring(11,16);
-                //String saapumisaika = junat.get(i).getTimeTableRows().get(vikaAika).getScheduledTime().substring(11,16);
                 String saapumisaika = junat.get(i).getTimeTableRows().get(haeIndeksi(junat, minne)).getScheduledTime().substring(11,16);
                 System.out.printf("%-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika);
-
             }
-
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -48,12 +42,10 @@ public class Hakija {
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junat = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
 
-
             List<Juna> uusiLista =
                     junat.stream()
                             .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(0).getScheduledTime()))
                             .collect(Collectors.toCollection(ArrayList::new));
-
 
             for (int i = 0; i < uusiLista.size(); i++) {
                 int vikaAika = uusiLista.get(i).getTimeTableRows().size()-1;
@@ -62,9 +54,8 @@ public class Hakija {
                 String tyyppi = uusiLista.get(i).getTrainType() + uusiLista.get(i).getTrainNumber();
                 String maaranpaa = uusiLista.get(i).getTimeTableRows().get(vikaAika).getStationShortCode();
 
-                System.out.printf("%-10s %-10s %-10s  \n", tyyppi, lahtoaika, haePitkaAsema(maaranpaa));       // haePitkaAsema(maaranpaa));
+                System.out.printf("%-10s %-10s %-10s  \n", tyyppi, lahtoaika, haeAsema(maaranpaa));
             }
-
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -74,8 +65,24 @@ public class Hakija {
         Scanner lukija = new Scanner(System.in);            // käyttäjän valitsemalta asemalta
         System.out.println();
         System.out.print("Anna lähtöpaikka: ");
-        //String mistaPitka = ;
-        String mista = haeLyhenne(lukija.nextLine());
+        String mista;
+        while (true) {
+            if (lukija.hasNextLine()) {
+                mista = haeAsema(lukija.nextLine());
+
+                if (mista.equals("VIRHE")) {
+                    System.out.println("Asemaa ei löydy!");
+                    System.out.print("Anna lähtöpaikka: ");
+                    continue;
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println("Tyhjä syöte!");
+                System.out.print("Anna lähtöpaikka: ");
+                continue;
+            }
+        }
 
         String juna="Juna";
         String lahto="Lähtee";
@@ -93,12 +100,49 @@ public class Hakija {
         Scanner lukija = new Scanner(System.in);
         System.out.println();
         System.out.print("Anna lähtöpaikka: ");
-        String mista = haeLyhenne(lukija.nextLine());
-        String mistaPitka = haePitkaAsema(mista);
+        String mista;
+
+        while (true) {
+            if (lukija.hasNextLine()) {
+                mista = haeAsema(lukija.nextLine());
+
+                if (mista.equals("VIRHE")) {
+                    System.out.println("Asemaa ei löydy!");
+                    System.out.print("Anna lähtöpaikka: ");
+                    continue;
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println("Tyhjä syöte!");
+                System.out.print("Anna lähtöpaikka: ");
+                continue;
+            }
+        }
+
+        String mistaPitka = haeAsema(mista);
 
         System.out.print("Anna pääteasema: ");
-        String minne = haeLyhenne(lukija.nextLine());
-        String minnePitka = haePitkaAsema(minne);
+        String minne;
+
+        while (true) {
+            if (lukija.hasNextLine()) {
+                minne = haeAsema(lukija.nextLine());
+
+                if (minne.equals("VIRHE")) {
+                    System.out.println("Asemaa ei löydy!");
+                    System.out.print("Anna pääteasema: ");
+                    continue;
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println("Tyhjä syöte!");
+                System.out.print("Anna pääteasema: ");
+                continue;
+            }
+        }
+        String minnePitka = haeAsema(minne);
 
         System.out.println("Ladataan junia...");
         System.out.println();
@@ -106,7 +150,7 @@ public class Hakija {
         lueMistaMinne(mista, minne);
     }
 
-    public String haeLyhenne(String asema) {
+    public String haeAsema(String asema) {
         String tiedosto = "src/fi/academy/asemienlyhenteet.txt";
         try (FileReader fr = new FileReader(tiedosto);
              BufferedReader in = new BufferedReader(fr)) {
@@ -117,22 +161,6 @@ public class Hakija {
                 if (palat[0].equalsIgnoreCase(asema)) {
                     return palat[1];
                 }
-            }
-        } catch (IOException ex) {
-            return "Virhe!";
-        }
-        return "Asemaa ei löytynyt";
-    }
-
-
-    public String haePitkaAsema(String asema) {
-        String tiedosto = "src/fi/academy/asemienlyhenteet.txt";
-        try (FileReader fr = new FileReader(tiedosto);
-             BufferedReader in = new BufferedReader(fr)) {
-
-            String rivi;
-            while ((rivi = in.readLine()) != null) {
-                String[] palat = rivi.split(";");          // ArrayIndexOutOfBoundsException käsittely!!! Ei välttämättä edes tässä kohdassa
                 if (palat[1].equalsIgnoreCase(asema)) {
                     return palat[0];
                 }
@@ -140,9 +168,7 @@ public class Hakija {
         } catch (IOException ex) {
             return "Virhe!";
         }
-        return "Asemaa ei löytynyt";
-
-
+        return "VIRHE";
     }
 
     public int haeIndeksi(List<Juna> lista, String lyhenne){

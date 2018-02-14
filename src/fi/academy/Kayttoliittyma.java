@@ -18,7 +18,16 @@ public class Kayttoliittyma {
         boolean quit = false;
         while (!quit){
             System.out.print("\nSyötä komento --> ");
-            int komento = Integer.parseInt(lukija.nextLine());
+
+            String syote = lukija.nextLine();
+            int komento;
+
+            if (syote.equals("0") || syote.equals("1") || syote.equals("2") || syote.equals("3") || syote.equals("4") || syote.equals("5")) {
+                komento = Integer.parseInt(syote);
+            } else {
+                System.out.println("Tuntematon komento!");
+                continue;
+            }
 
             switch (komento){
                 case 0:
@@ -34,17 +43,21 @@ public class Kayttoliittyma {
                     this.hakijaOlio.haeJunatLahtoasemanPerusteella();
                     break;
 
+                case 3:
+                    break;
+
+                case 4:
+                    break;
+
                 case 5:
                     printtaaKomennot();
                     break;
+
             }
-
-
         }
     }
 
     private void printtaaKomennot(){
-
         System.out.println("\nValitse komento syöttämällä numero: ");
         System.out.println("\t0 = Sulje ohjelma");
         System.out.println("\t1 = Hae reitti");
@@ -53,16 +66,4 @@ public class Kayttoliittyma {
         System.out.println("\t4 = Hae junan tiedot");
         System.out.println("\t5 = Tulosta komennot");
     }
-
-//    private void haeReitti(){
-//        System.out.println();
-//        System.out.print("Anna lähtöpaikka: ");
-//        String mista = this.lukija.nextLine();
-//
-//        System.out.print("Anna pääteasema: ");
-//        String minne = this.lukija.nextLine();
-//    }
-
-
-
 }
