@@ -21,7 +21,7 @@ public class Milla  extends Hakija{
 
     public void haeNumeronPerusteella() {
 
-        //System.out.println("Klo: " + new Date().toString().substring(11, 16));
+
 
         Scanner lukija = new Scanner(System.in);
         System.out.print("\nAnna junan numero: ");
@@ -52,6 +52,7 @@ public class Milla  extends Hakija{
                     String asemat = "\nVälillä: " + nykyinenAsema + " - "
                             + seuraavaAsema;
                     System.out.println(asemat);
+                   // System.out.println("Klo: " + new Date().toString().substring(11, 16));
                 } catch(IOException f){
                     System.out.println(f); } }
         } catch (IOException e) {

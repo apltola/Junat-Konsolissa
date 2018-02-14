@@ -254,3 +254,4 @@ Ylivieska;YV
 Ähtäri;ÄHT
 Äänekoski;ÄKI
 Äetsä;ÄS
+Pietari;PTR
