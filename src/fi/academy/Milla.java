@@ -29,10 +29,8 @@ public class Milla {
                     ObjectMapper mapperUusi = new ObjectMapper();
                     CollectionType millanUusi = mapperUusi.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
                     List<Juna> junaUusiLista = mapperUusi.readValue(urlAsemat, millanUusi);
-
-                    System.out.println("Välillä:");
-                    System.out.print(junaLista.get(0).getStation() + "-");
-                    System.out.println(junaLista.get(0).getNextStation());
+                    String asemat = "Välillä: " + junaLista.get(0).getStation() + " - " + junaLista.get(0).getNextStation();
+                    System.out.println(asemat);
                 } catch(IOException f){
                     System.out.println(f);
             }
