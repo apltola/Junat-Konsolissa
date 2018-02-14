@@ -7,7 +7,7 @@ import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TimeTableRow {
-@JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'", locale="UTC")
+@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", locale="UTC")
     private Date scheduledTime;
     private String stationShortCode;
     private String type;

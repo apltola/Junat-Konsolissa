@@ -43,18 +43,20 @@ public class Hakija {
     public void lueJunatLahtoasemanPerusteella(String mista) {
         String baseurl = "https://rata.digitraffic.fi/api/v1";
         try {
-            URL url = new URL(baseurl+"/live-trains/station/" + mista + "?departing_trains=5&include_nonstopping=false");
+            URL url = new URL(baseurl+"/live-trains/station/" + mista + "?departing_trains=200&include_nonstopping=false");
             ObjectMapper mapper = new ObjectMapper();
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junat = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
 
             List<Juna> uusiLista =
                     junat.stream()
-                            .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(0).getScheduledTime().toString()))
+                            .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(0).getScheduledTime()))
                             .collect(Collectors.toCollection(ArrayList::new));
 
             for (int i = 0; i < uusiLista.size(); i++) {
                 int vikaAika = uusiLista.get(i).getTimeTableRows().size()-1;
+
+
 
                 String lahtoaika = uusiLista.get(i).getTimeTableRows().get(0).getScheduledTime().toString().substring(11,16);
                 String tyyppi = uusiLista.get(i).getTrainType() + uusiLista.get(i).getTrainNumber();
