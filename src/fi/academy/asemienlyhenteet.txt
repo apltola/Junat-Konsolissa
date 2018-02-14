@@ -120,7 +120,7 @@ Orivesi keskusta;OVK
 Oulainen;OU
 Oulu;OL
 Oulunkylä;OLK
-PaimenporttiPTI
+Paimenportti;PTI
 Paltamo;PTO
 Parikkala;PAR
 Parkano;PKO
