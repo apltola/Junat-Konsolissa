@@ -13,22 +13,35 @@ public class Milla {
 
     public static void main(String[] args) {
 
-        String junanNumero = "47";
-        String alkuUrl = "https://rata.digitraffic.fi/api/v1/train-tracking/latest/";
+        String junanNumero = "143";
+        String alkuUrl = "https://rata.digitraffic.fi/api/v1/";
         try {
-            URL url = new URL(alkuUrl + junanNumero + "?version=1000");
+            URL urlLiike = new URL(alkuUrl + "trains/latest/" + junanNumero);
             ObjectMapper mapper = new ObjectMapper();
             CollectionType millan = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
-            List<Juna> junaLista = mapper.readValue(url, millan);
-            System.out.println("Välillä:");
-            System.out.print(junaLista.get(0).getStation() + "-");
-            System.out.println(junaLista.get(0).getNextStation());
+            List<Juna> junaLista = mapper.readValue(urlLiike, millan);
 
-        } catch (IOException e){
+            if (!junaLista.get(0).isRunningCurrently()) {
+                System.out.println("Juna ei ole tällä hetkellä liikkeessä");
+            } else {
+                try {
+                    URL urlAsemat = new URL(alkuUrl + "train-tracking/latest/" + junanNumero + "?version=1000");
+                    ObjectMapper mapperUusi = new ObjectMapper();
+                    CollectionType millanUusi = mapperUusi.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
+                    List<Juna> junaUusiLista = mapperUusi.readValue(urlAsemat, millanUusi);
+
+                    System.out.println("Välillä:");
+                    System.out.print(junaLista.get(0).getStation() + "-");
+                    System.out.println(junaLista.get(0).getNextStation());
+                } catch(IOException f){
+                    System.out.println(f);
+            }
+        }
+
+        } catch (IOException e) {
             System.out.println(e);
         }
 
 //Miten kysytään:
-
     }
 }
