@@ -168,7 +168,7 @@ public class Hakija {
         } catch (IOException ex) {
             return "Virhe!";
         }
-        return "VIRHE";
+        return "joku pikkuasema";
     }
 
     public int haeIndeksi(List<Juna> lista, String lyhenne){
