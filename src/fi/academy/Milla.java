@@ -24,7 +24,7 @@ public class Milla  extends Hakija{
 
 
         Scanner lukija = new Scanner(System.in);
-        System.out.print("Anna junan numero: ");
+        System.out.print("\nAnna junan numero: ");
         String junanNumero = lukija.nextLine();
 
         String alkuUrl = "https://rata.digitraffic.fi/api/v1/";
@@ -35,14 +35,14 @@ public class Milla  extends Hakija{
             List<Juna> junaLista = mapper.readValue(urlLiike, millan);
 
             if (!junaLista.get(0).isRunningCurrently()) {
-                System.out.println("Juna ei ole tällä hetkellä liikkeessä");
+                System.out.println("\nJuna ei ole tällä hetkellä liikkeessä");
             } else {
                 try {
                     URL urlAsemat = new URL(alkuUrl + "train-tracking/latest/" + junanNumero + "?version=1000");
                     ObjectMapper mapperUusi = new ObjectMapper();
                     CollectionType millanUusi = mapperUusi.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
                     List<Juna> junaUusiLista = mapperUusi.readValue(urlAsemat, millanUusi);
-                    String asemat = "Välillä: " + haeAsema(junaUusiLista.get(0).getStation()) + " - "
+                    String asemat = "\nVälillä: " + haeAsema(junaUusiLista.get(0).getStation()) + " - "
                             + haeAsema(junaUusiLista.get(0).getNextStation());
                     System.out.println(asemat);
                 } catch(IOException f){
