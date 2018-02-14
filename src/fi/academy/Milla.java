@@ -56,3 +56,5 @@ public class Milla  extends Hakija{
             System.out.println(e); }
 
 }}
+//Date d = new Date();
+//            d.getTime();
