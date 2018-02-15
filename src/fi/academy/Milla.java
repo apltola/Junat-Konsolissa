@@ -50,7 +50,7 @@ public class Milla  extends Hakija{
                    // System.out.println("Klo: " + new Date().toString().substring(11, 16));
                 } catch(IOException f){
                     System.out.println("\nVIRHE: " + f); } }
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("\nTuntematon junan numero"); }
 
 
