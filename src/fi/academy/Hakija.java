@@ -181,6 +181,10 @@ public class Hakija {
         return "VIRHE";
     }
 
+    public void muokkaaStringSyotetta(String syote) {
+        syote.replaceAll("\\s","" ).replaceAll("\\d","" );
+
+    }
 //    public int haeIndeksi(List<Juna> lista, String lyhenne){
 //        for (int i = 0; i < lista.size(); i++) {
 //            List<TimeTableRow> ajat = lista.get(i).getTimeTableRows();
