@@ -33,7 +33,13 @@ public class UusiHakija {
     }
 
     public void tulostaMistaMinne(List<Juna> junat, String mista, String minne){
-        for (int i = 0; i < junat.size(); i++) {
+        int lukumaara = 10;
+        if (junat.size() < lukumaara) {
+            lukumaara = junat.size();
+        }
+
+
+        for (int i = 0; i < lukumaara; i++) {
             Juna juna = junat.get(i);
             String tyyppi = juna.getTrainType() + juna.getTrainNumber();
             String lahtoaika = juna.getTimeTableRows().get(datanLukija.lahtemisenIndeksi(juna, mista)).getScheduledTime().toString().substring(11, 16);
