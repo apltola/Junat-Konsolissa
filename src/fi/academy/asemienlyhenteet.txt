@@ -180,11 +180,13 @@ Paltamo;PTO
 Pietarsaari;PTS
 Punkaharju;PUN
 Purola;PUR
+Pyhäkumpu erkanemisvaihe;PYE
 Pylväsjoki;PYJ
 Pyhäkumpu;PYK
 Pynttäri;PYN
 Pyssy;PYS
 Pyöree;PYÖ
+Pälkjärvi;PÄI
 Pälsaari;PÄL
 Päsinselkä;PÄS
 Petäjävesi;PVI
@@ -194,7 +196,7 @@ Pölläkkälä;PÖL
 Ruoholahti;RL
 Rastila;RS
 Rautatientori;RT
-Raemäki;RAR
+Raemäki;RAE
 Rauha;RAH
 Raisio;RAI
 Rahola;RAL
@@ -603,7 +605,6 @@ Vehkapuro;VPU
 Vaarala;VRA
 Vihtavuori;VRI
 Viertola;VRK
-Vuorela JR;
 Värälä;VRL
 Vierumäki;VRM
 Varanen;VRN

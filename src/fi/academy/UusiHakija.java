@@ -30,6 +30,8 @@ public class UusiHakija {
         }
     }
 
+
+
     public void kysyMistaMinne(){
         Scanner lukija = new Scanner(System.in);
         System.out.println();
@@ -41,14 +43,32 @@ public class UusiHakija {
         String minne = virheSyotteidenKasittely(lukija, "Anna pääteasema: ");
         String minnePitka = haeAsema(minne);
 
-        System.out.print("Anna lähtoaika (muodossa hh:mm): ");
-        String lahtoAika = lukija.nextLine();
+        System.out.println("Haetaanko tämän päivän junat?");
+        System.out.println("\t0 = ei");
+        System.out.println("\t1 = kyllä");
+        int valinta = Integer.parseInt(lukija.nextLine());
 
-        System.out.println("\nLadataan junia...");
-        System.out.println();
-        System.out.printf("%-10s %-10s %-10s %-10s \n", "Juna", mistaPitka, minnePitka, "Matka-aika");
+        if (valinta == 0){
+            System.out.print("Anna lähtöjen päivämäärä muodossa pp.kk.vvvv --> ");
+            String paiva = lukija.nextLine();
 
-        tulostaJunatMistaMinne(mista, minne, lahtoAika);
+            System.out.print("Anna lähtoaika muodossa hh:mm --> ");
+            String aika = lukija.nextLine();
+
+            System.out.println("\nLadataan junia...\n");
+            System.out.printf("%-10s %-10s %-10s %-10s \n", "Juna", mistaPitka, minnePitka, "Matka-aika");
+            tulostaPaivanMukaan(mista, minne, aika, paiva);
+
+        } else {
+            System.out.print("Anna lähtoaika (muodossa hh:mm): ");
+            String lahtoAika = lukija.nextLine();
+
+            System.out.println("\nLadataan junia...");
+            System.out.println();
+            System.out.printf("%-10s %-10s %-10s %-10s \n", "Juna", mistaPitka, minnePitka, "Matka-aika");
+
+            tulostaJunatMistaMinne(mista, minne, lahtoAika);
+        }
     }
 
     public void tulostaJunatLahtoasemalta(String mista){
@@ -94,7 +114,24 @@ public class UusiHakija {
         tulostaJunatLahtoasemalta(mista);
     }
 
+    public void tulostaPaivanMukaan(String mista, String minne, String aika, String paiva){
+        List<Juna> junat = this.datanLukija.lueDataPaivanMukaan(mista, minne, aika, paiva);
 
+        for (int i = 0; i < junat.size(); i++) {
+            Juna juna = junat.get(i);
+            String tyyppi = juna.getTrainType() + juna.getTrainNumber();
+            String lahtoaika = juna.getTimeTableRows().get(datanLukija.lahtemisenIndeksi(juna, mista)).getScheduledTime().toString().substring(11, 16);
+            String saapumisaika = juna.getTimeTableRows().get(datanLukija.saapumisenIndeksi(juna, minne)).getScheduledTime().toString().substring(11, 16);
+
+            Date lahto = junat.get(i).getTimeTableRows().get(datanLukija.lahtemisenIndeksi(juna, mista)).getScheduledTime();
+            Date saapum = junat.get(i).getTimeTableRows().get(datanLukija.saapumisenIndeksi(juna, minne)).getScheduledTime();
+
+            long aikaMinuutteina = (saapum.getTime() - lahto.getTime()) / 1000 / 60;
+            String matkaaika = aikaMinuutteina/60 + " h " + aikaMinuutteina%60 + " min";
+            System.out.printf("%-10s %-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika, matkaaika);
+        }
+    }
+    
     public String virheSyotteidenKasittely(Scanner lukija, String viesti) {
         String mista;
         while (true) {
@@ -148,6 +185,7 @@ public class UusiHakija {
     public void tulostaSaapuvatJunatAsemalle(String minne){
         List<Juna> junat = datanLukija.lueDataSaapumiasemalta(minne);
         // System.out.println(datanLukija.lueDataSaapumiasemalta(minne));
+
 
         int lukumaara = 10;
         if (junat.size() < lukumaara) {
