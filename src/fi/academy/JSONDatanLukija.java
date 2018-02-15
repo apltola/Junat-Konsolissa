@@ -22,11 +22,17 @@ public class JSONDatanLukija {
             ObjectMapper mapper = new ObjectMapper();
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junaLista = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
+
             List<Juna> rajattuLista = junaLista.stream()
                     .filter(juna -> juna.getTimeTableRows().get(lahtemisenIndeksi(juna, mista))
                             .getScheduledTime().after(kalenteri.getTime()))
                     .collect(Collectors.toCollection(ArrayList::new));
-            return rajattuLista;
+
+            List<Juna> listaIlmanTavarajunia = rajattuLista.stream()
+                    .filter(juna -> !juna.getTrainType().equals("T"))
+                    .collect(Collectors.toCollection(ArrayList::new));
+
+            return listaIlmanTavarajunia;
         } catch (MismatchedInputException e) {
             System.out.println("Suoraa junayhteyttä ei löydy!");
         } catch (Exception ex) {
@@ -56,7 +62,11 @@ public class JSONDatanLukija {
                             .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(lahtemisenIndeksi(juna, mista)).getScheduledTime()))
                             .collect(Collectors.toCollection(ArrayList::new));
 
-            return rajatutJarjestyksessa;
+            List<Juna> junatIlmanVetureita = rajatutJarjestyksessa.stream()
+                    .filter(juna -> !juna.getTrainType().equals("VET") && !juna.getTrainType().equals("T")).collect(Collectors.toCollection(ArrayList::new));
+
+
+            return junatIlmanVetureita;
         } catch (Exception ex){
             System.out.println(ex);
         }
