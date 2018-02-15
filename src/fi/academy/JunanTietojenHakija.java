@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Milla  extends Hakija {
+public class JunanTietojenHakija extends Hakija {
 
     public static void main(String[] args) {
-        new Milla().kysyJunannumero();
+        //new JunanTietojenHakija().kysyJunannumero();
     }
 
     public void kysyJunannumero() throws NumberFormatException {

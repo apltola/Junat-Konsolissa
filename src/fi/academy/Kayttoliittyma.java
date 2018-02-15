@@ -7,12 +7,12 @@ import java.util.Scanner;
 
 public class Kayttoliittyma {
     private Scanner lukija;
-    private Milla milla;
+    private JunanTietojenHakija junanHakija;
     private Hakija hakija;
 
     public Kayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
-        this.milla = new Milla();
+        this.junanHakija = new JunanTietojenHakija();
         this.hakija = new Hakija();
     }
 
@@ -20,7 +20,6 @@ public class Kayttoliittyma {
 
         printtaaLogo();
         printtaaJunanKuva();
-        //printtaaEsittely();
 
         printtaaKomennot();
 
@@ -60,7 +59,7 @@ public class Kayttoliittyma {
                     break;
 
                 case 4:
-                    this.milla.haeNumeronPerusteella();
+                    this.junanHakija.kysyJunannumero();
                     break;
 
                 case 5:
@@ -87,17 +86,6 @@ public class Kayttoliittyma {
         } catch (IOException e) {
             System.out.println("Virhe logon lukemisessa");
         }
-    }
-
-    private void printtaaEsittely(){
-        try {
-            Files.lines(Paths.get("esittelyteksti.txt")).forEach(System.out::println);
-        } catch (IOException e) {
-            System.out.println("Virhe esittelyn lukemisessa");
-        }
-
-        System.out.println("PAINA ENTER");
-        lukija.nextLine();
     }
 
     private void printtaaJunanKuva(){

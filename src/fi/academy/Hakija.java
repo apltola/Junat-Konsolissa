@@ -1,8 +1,13 @@
 package fi.academy;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -49,7 +54,11 @@ public class Hakija {
             Date saapum = junat.get(i).getTimeTableRows().get(datanLukija.saapumisenIndeksi(juna, minne)).getScheduledTime();
 
             long aikaMinuutteina = (saapum.getTime() - lahto.getTime()) / 1000 / 60;
-            String matkaaika = aikaMinuutteina/60 + " h " + aikaMinuutteina%60 + " min";
+            String matkaaika;
+            if (aikaMinuutteina/60 > 0)
+                matkaaika = aikaMinuutteina/60 + " h " + aikaMinuutteina%60 + " min";
+            else
+                matkaaika = aikaMinuutteina%60 + " min";
             System.out.printf("%-10s %-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika, matkaaika);
         }
     }
@@ -192,7 +201,7 @@ public class Hakija {
     }
 
     public String haeAsema(String asema) {
-        String tiedosto = "src/fi/academy/asemienlyhenteet.txt";
+        String tiedosto = "asemienlyhenteet.txt";
         try (FileReader fr = new FileReader(tiedosto);
              BufferedReader in = new BufferedReader(fr)) {
 
@@ -263,8 +272,4 @@ public class Hakija {
         System.out.printf("%-13s %-18s %-18s %-18s \n", juna, lahto, saapuu, mihin  );
         tulostaSaapuvatJunatAsemalle(minne);
     }
-
-
-
-
 }
