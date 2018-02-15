@@ -146,7 +146,10 @@ public class JSONDatanLukija {
                             .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(saapumisenIndeksi(juna, minne)).getScheduledTime()))
                             .collect(Collectors.toCollection(ArrayList::new));
 
-            return rajatutJarjestyksessa;
+            List<Juna> junatIlmanVetureita = rajatutJarjestyksessa.stream()
+                    .filter(juna -> !juna.getTrainType().equals("VET") && !juna.getTrainType().equals("T")).collect(Collectors.toCollection(ArrayList::new));
+
+            return junatIlmanVetureita;
         } catch (Exception ex){
             System.out.println(ex);
         }

@@ -72,10 +72,10 @@ public class Kayttoliittyma {
         System.out.println("\nValitse komento syöttämällä numero: ");
         System.out.println("\t0 = Sulje ohjelma");
         System.out.println("\t1 = Hae reitti");
-        System.out.println("\t2 = Hae seuraavat asemalta lähtevät junat");
-        System.out.println("\t3 = Hae saapuvat junat aseman mukaan");
-        System.out.println("\t4 = Hae junan tiedot");
-        System.out.println("\t5 = Tulosta komennot");
+        System.out.println("\t2 = Hae asemalta lähtevät junat");
+        System.out.println("\t3 = Hae asemalle saapuvat junat");
+        System.out.println("\t4 = Hae tietyn junan sijainti ");
+        System.out.println("\t5 = Tulosta valikko");
     }
 
     private void printtaaLogo(){
@@ -104,7 +104,7 @@ public class Kayttoliittyma {
             System.out.println("Virhe kuvan lukemisessa");
         }
 
-        System.out.print("\n\n\nPAINA ENTER: ");
+        System.out.print("\n\n\n\t\t\t\t\t\t\t\tPAINA ENTER: ");
         this.lukija.nextLine();
 
 
