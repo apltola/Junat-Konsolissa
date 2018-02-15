@@ -207,7 +207,7 @@ public class UusiHakija {
             String lahtopaikka = junat.get(i).getTimeTableRows().get(0).getStationShortCode();
             String saapumisaika = juna.getTimeTableRows().get(datanLukija.saapumisenIndeksi(juna, minne)).getScheduledTime().toString().substring(11, 16);
             String maaranpaa = junat.get(i).getTimeTableRows().get(vikaAika).getStationShortCode();
-            System.out.printf("%-10s %-10s %-10s %-10s \n", tyyppi, haeAsema(lahtopaikka), saapumisaika, haeAsema(maaranpaa));
+            System.out.printf("%-10s %-15s %-15s %-15s \n", tyyppi, haeAsema(lahtopaikka), saapumisaika, haeAsema(maaranpaa));
         }
     }
 
@@ -219,13 +219,13 @@ public class UusiHakija {
         String minne = virheSyotteidenKasittely(lukija, "Anna saapumisasema: ");
 
         String juna="Juna";
-        String lahto="Lähtöpaika";
+        String lahto="Lähtöpaikka";
         String saapuu="Saapumisaika";
         String mihin= "Määränpää";
 
         System.out.println("\nLadataan junia...");
         System.out.println();
-        System.out.printf("%-10s %-10s %-10s %-10s \n", juna, lahto, saapuu, mihin  );
+        System.out.printf("%-10s %-15s %-15s %-15s \n", juna, lahto, saapuu, mihin  );
         tulostaSaapuvatJunatAsemalle(minne);
     }
 
