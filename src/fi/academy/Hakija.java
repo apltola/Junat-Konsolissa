@@ -1,12 +1,15 @@
 package fi.academy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.databind.type.CollectionType;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,7 +22,7 @@ public class Hakija {
         
         String baseurl = "https://rata.digitraffic.fi/api/v1";
         try {
-            URL url = new URL(baseurl+"/live-trains/station/" + mista + "/" + minne);
+            URL url = new URL(URI.create(baseurl+"/live-trains/station/" + mista + "/" + minne).toASCIIString());
             ObjectMapper mapper = new ObjectMapper();
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junat = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
@@ -28,16 +31,25 @@ public class Hakija {
                     .filter(juna -> juna.getTimeTableRows().get(0).getScheduledTime().after(kalenteri.getTime()))
                     .collect(Collectors.toCollection(ArrayList::new));
 
-            for (int i = 0; i < ajallaRajatut.size(); i++) {
+            int lukumaara = 10;
+            if (ajallaRajatut.size() < lukumaara) {
+                lukumaara = ajallaRajatut.size();
+            }
+            for (int i = 0; i < lukumaara; i++) {
                 String tyyppi;
                 if (junat.get(i).getTrainCategory().equals("Commuter")) {
                     tyyppi = junat.get(i).getCommuterLineID();
                 } else {
                     tyyppi = junat.get(i).getTrainType() + junat.get(i).getTrainNumber();
                 }
-                String lahtoaika = ajallaRajatut.get(i).getTimeTableRows().get(0).getScheduledTime().toString().substring(11,16);
-                String saapumisaika = ajallaRajatut.get(i).getTimeTableRows().get(haeIndeksi(junat, minne)).getScheduledTime().toString().substring(11,16);
-                System.out.printf("%-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika);
+                Date lahto = ajallaRajatut.get(i).getTimeTableRows().get(0).getScheduledTime();
+                Date saapum = ajallaRajatut.get(i).getTimeTableRows().get(haeIndeksi(junat, minne)).getScheduledTime();
+                String lahtoaika = lahto.toString().substring(11,16);
+                String saapumisaika = saapum.toString().substring(11,16);
+
+                long aikaMinuutteina = (saapum.getTime() - lahto.getTime()) / 1000 / 60;
+                String matkaaika = aikaMinuutteina/60 + " h " + aikaMinuutteina%60 + " min";
+                System.out.printf("%-10s %-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika, matkaaika);
             }
         } catch (Exception ex) {
             System.out.println(ex);
@@ -50,7 +62,7 @@ public class Hakija {
 
         String baseurl = "https://rata.digitraffic.fi/api/v1";
         try {
-            URL url = new URL(baseurl+"/live-trains/station/" + mista + "?departing_trains=200&include_nonstopping=false");
+            URL url = new URL(URI.create(baseurl+"/live-trains/station/" + mista + "?departing_trains=200&include_nonstopping=false").toASCIIString());
             ObjectMapper mapper = new ObjectMapper();
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junat = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
@@ -64,7 +76,12 @@ public class Hakija {
                             .sorted(Comparator.comparing(juna -> juna.getTimeTableRows().get(0).getScheduledTime()))
                             .collect(Collectors.toCollection(ArrayList::new));
 
-            for (int i = 0; i < rajatutJarjestyksessa.size(); i++) {
+            int lukumaara = 10;
+            if (rajatutJarjestyksessa.size() < lukumaara) {
+                lukumaara = rajatutJarjestyksessa.size();
+            }
+
+            for (int i = 0; i < lukumaara; i++) {
                 int vikaAika = rajatutJarjestyksessa.get(i).getTimeTableRows().size()-1;
 
                 String tyyppi;
@@ -116,9 +133,10 @@ public class Hakija {
 
         System.out.println("\nLadataan junia...");
         System.out.println();
-        System.out.printf("%-10s %-10s %-10s \n", "Juna", mistaPitka, minnePitka);
+        System.out.printf("%-10s %-10s %-10s %-10s \n", "Juna", mistaPitka, minnePitka, "Matka-aika");
 
         lueMistaMinne(mista, minne, lahtoAika);
+
     }
 
     private String virheSyotteidenKasittely(Scanner lukija, String viesti) {
