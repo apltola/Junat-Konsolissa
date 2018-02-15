@@ -366,7 +366,7 @@ Selänpää;SPÄ
 Saari;SR
 Sairala;SRA
 Sortavalan satama;SRH
-Saarijärvi SRJ
+Saarijärvi;SRJ
 Saarijärvi kk;SRK
 Saarela;SRL
 Saramäki;SRM
@@ -435,7 +435,7 @@ Torkkeli;TKE
 Timankangas;TKG
 Tikkala;TKK
 Tikkurila;TKL
-Tikkurila k:TIK
+Tikkurila k;TIK
 Tahkoluoto;TKO
 Tikanperä;TKP
 Tokkari;TKR
@@ -627,7 +627,7 @@ Vanattara;VTR
 Vitsakylä;VTS
 Ventälä;VTÄ
 Vuoksenniska;VUO
-Vartius.raja;VUR
+Vartius raja;VUR
 Vartius;VUS
 Vähäjoki;VÄJ
 Vähä;VÄ
