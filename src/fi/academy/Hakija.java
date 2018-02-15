@@ -182,7 +182,7 @@ public class Hakija {
     }
 
     public String muokkaaStringSyotetta(String syote) {
-        syote.replaceAll("\s","" ).replaceAll("\d","" );
+        syote.replaceAll("\\s","" ).replaceAll("\\d","" );
 
     }
 //    public int haeIndeksi(List<Juna> lista, String lyhenne){
