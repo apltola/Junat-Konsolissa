@@ -149,37 +149,180 @@ Naantali;NNL
 Nokia;NOA
 Niirala;NRL
 Nurmes;NRM
+Nuojua;NUA
+Nurmenkylä;NUM
 Nuppulinna;NUP
+Nurmo;NUR
+Nutturla;NUT
+Niva;NV
+Nostava;NVA
 Nivala;NVL
+Nivavaara;NVV
+Nykyme;NYK
+Nivala;NVL
+Näljäneva;NÄL
+Näpiö;NÄR
+Näätäjoki;NÄÄ
+Ohenmäki;OHM
+Olkiaho;OHO
 Oitti;OI
+Kouvola oikoraide;OIK
+Ojakkala;OJA
+Ojanmaa;OJM
+Okkula;OK
+Outokumpu k;OKK
+Okeroinen;OKR
+Outokumpu;OKU
 Oulu;OL
 Oulunkylä;OLK
+Oulunlahti;OLL
+Olli;OLLI
+Oulu tavara;OLT
+Orimattila;OM
+Omenamäki;OME
+Onkamo;OMO
+Onttola;ONT
+Oulu Oritkari;ORI
 Onkamo;ONK
+Orilampi;ORL
+Orsijoki;ORS
+Oserki;OS
+Oksava;OSA
 Otava;OT
 Oulainen;OU
+Otanmäki;OTM
+Outinen;OTN
+Otalampi;OTP
+Otavan satama;OTS
+Oulu l;OUL
 Orivesi;OV
+Olhava;OVA
+Oravijärvi;OVJ
+Oravakallio;OVK
+Oravivaara;OVV
+Ojajärvi;OÄI
+Puotila;PT
+Pelkola;PA
+Pajari;PAJ
+Paakkola;PAK
+Panttila;PAN
+Papero;PAP
 Parikkala;PAR
+Pankakoski;PAS
+Patuna;PAT
+Padasoja;PDO
+Pero;PE
 Pello;PEL
+Petas;PET
+Peura;PEU
+Palokangas;PGS
 Pihlajavesi;PH
+Pihlajamäki;PHM
+Pitkäaho;PHO
+Pauhu;PHU
 Pyhäsalmi;PHÄ
+Pitkälahti;PI
+Piipsjärvi;PIJ
+Piikkiö;PIK
+Pinjainen;PIN
+Pitkäperä;PIT
+Piuha;PIU
+Perkjärvi;PJ
+Paukkala;PJA
+Pirttijärvi;PJI
+Pohjakoski;PJK
 Pitäjänmäki;PJM
+Pajusuo;PJS
+Pajujärvi;PJV
+Patojärvi;PJÄ
+Puska;PK
+Parikka;PKA
+Paakki;PKI
+Poikkeus;PKK
+Pikkarala;PKL
+Pukinniemi;PKN
 Parkano;PKO
+Pekanpää;PKP
+Puukari;PKR
+Pohjankuru;PKU
+Pääskylahti;PKY
+Pulsa;PL
 Puistola;PLA
+Piilikangas;PLG
+Perälahti;PLH
+Piili;PLI
+Palokoski;PLK
+Pellesmäki;PLM
+Palopuro;PLP
+Palosuo;PLS
+Joensuu Peltola;PLT
+Pohjois-Louko;PLU
+Pihlava;PLV
+Päivölä;PLÄ
 Pieksamäki;PM
+Pieksamäki p;PIE
+Parkkima;OMA
+Peltosalmi;PMI
 Pukinmäki;PMK
+Pieksamäki lajittelu;PMLA
 Pieksamäen tavara-asema;PMT
+Pohjamäki;PMÄ
+Panelia;PN
+Pennala;PNA
+Pienkylä;PNK
+Parantala;PNL
+Puntala;PNT
 Pännäinen;PNÄ
+Paimio;PO
+Potila;POA
 Pohjois-Haaga;POH
+Poiksilta;POI
+Pokra;POK
+Pomarkku;POM
+Porokylä;POR
+Palta Oy;POY
+Pihtipudas;PP
+Perälä;PR
+Paloranta;PRA
 Pori;PRI
+Pursijärvi;PRJ
+Pirttikangas;PRK
 Parola;PRL
+Parkumäki;PRM
+Puro;PRO
+Parpola;PRP
+Pirttiselkä;PRT
 Porvoo;PRV
+Paasioja;PSJ
+Pesiökylä;PSK
 Pasila;PSL
+Pasila alapiha;PSLA
 Pasilan tavara-asema;PSLT
+Pasila autojuna-asema;PAU
+Pasanen;PSN
+Pikkusuo;PSU
+Patokangas;PTG
+Partaharju;PTH
+Poitti;PTI
 Paimenportti;PTI
+Petäjäjärvi;PTJ
+Pintuslampi;PTL
+Paltainen;PTN
 Paltamo;PTO
 Pietarsaari;PTS
+Pintuinen;PTU
+Putikko;PU
+Puujoki;PUJ
 Punkaharju;PUN
+Puolukkasuo;PUO
 Purola;PUR
+Paukaneva;PVA
+Puhos;PUS
+Petäjävesi;PVI
+Palvajärvi;PVJ
+Porvoon keskusta;PVK
+Päävaara;PVR
+Pyhäjärvi;PY
 Pyhäkumpu erkanemisvaihe;PYE
 Pylväsjoki;PYJ
 Pyhäkumpu;PYK
@@ -523,7 +666,6 @@ Utajärvi;UTJ
 Uuksu;UUK
 Uusi-Värtsilä;UVÄ
 Vuorten-Vuori;V-V
-Vuosaari;VS
 Vaala;VAA
 Viita-aho;VAH
 Vainikkala;VAI
@@ -673,3 +815,4 @@ Ypäjä;YÄ
 Äetsä;ÄS
 Äystö;ÄTÖ
 Pietari;PTR
+Pietari Suomen asema;PD
