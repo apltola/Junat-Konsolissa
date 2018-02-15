@@ -310,7 +310,7 @@ Kalliomäki;KAM
 Kalliovarasto;KAO
 Kaukopää;KAP
 Karila;KAR
-KarviainenKAR
+Karviainen;KAR
 Karanmäki;KARA
 Karhumäki;KARH
 Karkkila ;KARK
