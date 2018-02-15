@@ -16,18 +16,13 @@ import java.util.Scanner;
 public class Milla  extends Hakija{
 
     public static void main(String[] args) {
-        new Milla().haeNumeronPerusteella();
-    }
+        new Milla().haeNumeronPerusteella(); }
 
     public void haeNumeronPerusteella() {
-
-
 
         Scanner lukija = new Scanner(System.in);
         System.out.print("\nAnna junan numero: ");
         String junanNumero = lukija.nextLine();
-
-
         String alkuUrl = "https://rata.digitraffic.fi/api/v1/";
         try {
             URL urlLiike = new URL(alkuUrl + "trains/latest/" + junanNumero);
@@ -54,8 +49,9 @@ public class Milla  extends Hakija{
                     System.out.println(asemat);
                    // System.out.println("Klo: " + new Date().toString().substring(11, 16));
                 } catch(IOException f){
-                    System.out.println(f); } }
+                    System.out.println("\nVIRHE: " + f); } }
         } catch (IOException e) {
-            System.out.println(e); }
+            System.out.println("\nTuntematon junan numero"); }
+
 
 }}
