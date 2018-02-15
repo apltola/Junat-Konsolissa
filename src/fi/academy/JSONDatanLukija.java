@@ -1,6 +1,7 @@
 package fi.academy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.databind.type.CollectionType;
 
 import java.net.URI;
@@ -17,13 +18,14 @@ public class JSONDatanLukija {
 
         String baseurl = "https://rata.digitraffic.fi/api/v1";
         try {
-            URL url = new URL(URI.create(baseurl+"/live-trains/station/" + mista + "/" + minne).toASCIIString());
+            URL url = new URL(URI.create(baseurl + "/live-trains/station/" + mista + "/" + minne).toASCIIString());
             ObjectMapper mapper = new ObjectMapper();
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junaLista = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
             List<Juna> rajattuLista = junaLista.stream().filter(juna -> juna.getTimeTableRows().get(lahtemisenIndeksi(juna, mista)).getScheduledTime().after(kalenteri.getTime())).collect(Collectors.toCollection(ArrayList::new));
             return rajattuLista;
-
+        } catch (MismatchedInputException e) {
+            System.out.println("Suoraa junayhteyttä ei löydy!");
         } catch (Exception ex) {
             System.out.println(ex);
         }
