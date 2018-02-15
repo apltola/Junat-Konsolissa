@@ -180,6 +180,7 @@ Paltamo;PTO
 Pietarsaari;PTS
 Punkaharju;PUN
 Purola;PUR
+Pyhäkumpu erkanemisvaihe;PYE
 Pylväsjoki;PYJ
 Pyhäkumpu;PYK
 Pynttäri;PYN
