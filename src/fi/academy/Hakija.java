@@ -181,7 +181,7 @@ public class Hakija {
         return "VIRHE";
     }
 
-    public String muokkaaStringSyotetta(String syote) {
+    public void muokkaaStringSyotetta(String syote) {
         syote.replaceAll("\\s","" ).replaceAll("\\d","" );
 
     }
