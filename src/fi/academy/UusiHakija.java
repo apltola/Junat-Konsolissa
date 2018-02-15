@@ -43,10 +43,20 @@ public class UusiHakija {
         String minne = virheSyotteidenKasittely(lukija, "Anna pääteasema: ");
         String minnePitka = haeAsema(minne);
 
-        System.out.println("Haetaanko tämän päivän junat?");
-        System.out.println("\t0 = ei");
-        System.out.println("\t1 = kyllä");
-        int valinta = Integer.parseInt(lukija.nextLine());
+        int valinta;
+        while (true){
+            try{
+                System.out.println("Haetaanko tämän päivän junat?");
+                System.out.println("\t0 = ei");
+                System.out.println("\t1 = kyllä");
+                valinta = Integer.parseInt(lukija.nextLine());
+                break;
+
+            } catch (NumberFormatException e){
+                System.out.println("\nSyötä 0 tai 1\n");
+                continue;
+            }
+        }
 
         if (valinta == 0){
             System.out.print("Anna lähtöjen päivämäärä muodossa pp.kk.vvvv --> ");
