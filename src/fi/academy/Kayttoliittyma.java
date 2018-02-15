@@ -7,20 +7,19 @@ import java.util.Scanner;
 
 public class Kayttoliittyma {
     private Scanner lukija;
-    private Milla milla;
-    private UusiHakija hakija;
+    private JunanTietojenHakija junanHakija;
+    private Hakija hakija;
 
     public Kayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
-        this.milla = new Milla();
-        this.hakija = new UusiHakija();
+        this.junanHakija = new JunanTietojenHakija();
+        this.hakija = new Hakija();
     }
 
     public void kayta(){
 
         printtaaLogo();
         printtaaJunanKuva();
-        //printtaaEsittely();
 
         printtaaKomennot();
 
@@ -29,10 +28,13 @@ public class Kayttoliittyma {
             System.out.print("\nSyötä komento --> ");
 
             String syote = lukija.nextLine();
+
             int komento;
 
             if (syote.equals("0") || syote.equals("1") || syote.equals("2") || syote.equals("3") || syote.equals("4") || syote.equals("5")) {
                 komento = Integer.parseInt(syote);
+            } else if (syote.isEmpty()){
+                continue;
             } else {
                 System.out.println("Tuntematon komento!");
                 continue;
@@ -57,7 +59,7 @@ public class Kayttoliittyma {
                     break;
 
                 case 4:
-                    this.milla.haeNumeronPerusteella();
+                    this.junanHakija.kysyJunannumero();
                     break;
 
                 case 5:
@@ -72,10 +74,10 @@ public class Kayttoliittyma {
         System.out.println("\nValitse komento syöttämällä numero: ");
         System.out.println("\t0 = Sulje ohjelma");
         System.out.println("\t1 = Hae reitti");
-        System.out.println("\t2 = Hae seuraavat asemalta lähtevät junat");
-        System.out.println("\t3 = Hae saapuvat junat aseman mukaan");
-        System.out.println("\t4 = Hae junan tiedot");
-        System.out.println("\t5 = Tulosta komennot");
+        System.out.println("\t2 = Hae asemalta lähtevät junat");
+        System.out.println("\t3 = Hae asemalle saapuvat junat");
+        System.out.println("\t4 = Hae tietyn junan sijainti ");
+        System.out.println("\t5 = Tulosta valikko");
     }
 
     private void printtaaLogo(){
@@ -86,17 +88,6 @@ public class Kayttoliittyma {
         }
     }
 
-    private void printtaaEsittely(){
-        try {
-            Files.lines(Paths.get("esittelyteksti.txt")).forEach(System.out::println);
-        } catch (IOException e) {
-            System.out.println("Virhe esittelyn lukemisessa");
-        }
-
-        System.out.println("PAINA ENTER");
-        lukija.nextLine();
-    }
-
     private void printtaaJunanKuva(){
         try {
             Files.lines(Paths.get("junanKuva.txt")).forEach(System.out::println);
@@ -104,7 +95,7 @@ public class Kayttoliittyma {
             System.out.println("Virhe kuvan lukemisessa");
         }
 
-        System.out.print("\n\n\nPAINA ENTER: ");
+        System.out.print("\n\n\n\t\t\t\t\t\t\t\tPAINA ENTER: ");
         this.lukija.nextLine();
 
 

@@ -1325,7 +1325,6 @@ Tytyri;TTR
 Turenki;TU
 Oulu Tuira;TUA
 Tuuloksenjoki;TUJ
-Turku;TUR
 Turku satama;TUS
 Tuuri;TUU
 Teuva;TUV
@@ -1376,7 +1375,7 @@ Vuohenoja;VHO
 Valkeakoski;VI
 Viiala;VIA
 Vihtari;VIH
-Turku Viheriäinen;VIE
+Viheriäinen;VIE
 Viisjärvi;VIJ
 Vika;VIK
 Vihtamo;VIM
@@ -1389,7 +1388,7 @@ Vuojoki;VJO
 Vahojärvi;VJR
 Vaatsjärvi;VJÄ
 Viekki;VK
-Tampere Viinikka;VKA
+Viinikka;VKA
 Vähäkangas;VKG
 Vasikkahaka;VKH
 Venetmäki;VKI
