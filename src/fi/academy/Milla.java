@@ -3,19 +3,14 @@ package fi.academy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.util.Collections.replaceAll;
-
 //Milla koodaa junien hakua junan numeron perusteella
-public class Milla  extends UusiHakija{
+public class Milla  extends Hakija {
 
     public static void main(String[] args) {
         new Milla().haeNumeronPerusteella(); }

@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class UusiHakija {
+public class Hakija {
     private JSONDatanLukija datanLukija = new JSONDatanLukija();
 
 
@@ -242,7 +242,7 @@ public class UusiHakija {
             String lahtopaikka = junat.get(i).getTimeTableRows().get(0).getStationShortCode();
             String saapumisaika = juna.getTimeTableRows().get(datanLukija.saapumisenIndeksi(juna, minne)).getScheduledTime().toString().substring(11, 16);
             String maaranpaa = junat.get(i).getTimeTableRows().get(vikaAika).getStationShortCode();
-            System.out.printf("%-10s %-15s %-15s %-15s \n", tyyppi, haeAsema(lahtopaikka), saapumisaika, haeAsema(maaranpaa));
+            System.out.printf("%-13s %-18s %-18s %-18s \n", tyyppi, haeAsema(lahtopaikka), saapumisaika, haeAsema(maaranpaa));
         }
     }
 
@@ -260,7 +260,7 @@ public class UusiHakija {
 
         System.out.println("\nLadataan junia...");
         System.out.println();
-        System.out.printf("%-10s %-15s %-15s %-15s \n", juna, lahto, saapuu, mihin  );
+        System.out.printf("%-13s %-18s %-18s %-18s \n", juna, lahto, saapuu, mihin  );
         tulostaSaapuvatJunatAsemalle(minne);
     }
 

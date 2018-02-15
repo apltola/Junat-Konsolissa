@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class Kayttoliittyma {
     private Scanner lukija;
     private Milla milla;
-    private UusiHakija hakija;
+    private Hakija hakija;
 
     public Kayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
         this.milla = new Milla();
-        this.hakija = new UusiHakija();
+        this.hakija = new Hakija();
     }
 
     public void kayta(){
