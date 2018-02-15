@@ -59,7 +59,7 @@ public class UusiHakija {
     public void kysyMistaMinne(){
         Scanner lukija = new Scanner(System.in);
         System.out.println();
-        System.out.print("Anna lähtöpaikka: ");
+        System.out.print("Anna lähtöasema: ");
         String mista = virheSyotteidenKasittely(lukija, "Anna lähtöasema: ");
         String mistaPitka = haeAsema(mista);
 
@@ -177,7 +177,7 @@ public class UusiHakija {
                     System.out.println("Asemaa ei löydy!");
                     System.out.println();
                     System.out.print(viesti);
-                    break;
+                    continue;
                 } else {
                     break;
                 }

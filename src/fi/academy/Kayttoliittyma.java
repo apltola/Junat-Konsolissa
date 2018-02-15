@@ -29,10 +29,13 @@ public class Kayttoliittyma {
             System.out.print("\nSyötä komento --> ");
 
             String syote = lukija.nextLine();
+
             int komento;
 
             if (syote.equals("0") || syote.equals("1") || syote.equals("2") || syote.equals("3") || syote.equals("4") || syote.equals("5")) {
                 komento = Integer.parseInt(syote);
+            } else if (syote.isEmpty()){
+                continue;
             } else {
                 System.out.println("Tuntematon komento!");
                 continue;
