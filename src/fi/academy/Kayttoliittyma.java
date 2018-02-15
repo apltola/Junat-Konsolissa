@@ -1,20 +1,26 @@
 package fi.academy;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Kayttoliittyma {
     private Scanner lukija;
-    private Hakija hakijaOlio;
     private Milla milla;
+    private UusiHakija hakija;
 
     public Kayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
-        this.hakijaOlio = new Hakija();
         this.milla = new Milla();
+        this.hakija = new UusiHakija();
     }
 
     public void kayta(){
-        System.out.println("TERVETULOA 1980-LUVULLE");
+
+        printtaaLogo();
+        //printtaaEsittely();
+
         printtaaKomennot();
 
         boolean quit = false;
@@ -33,16 +39,16 @@ public class Kayttoliittyma {
 
             switch (komento){
                 case 0:
-                    System.out.println("\nKiitos ja tervetuloa uudelleen!");
+                    System.out.println("\nTervetuloa käyttämään sovellusta uudelleen!");
                     quit = true;
                     break;
 
                 case 1:
-                    this.hakijaOlio.haeReitti();
+                    this.hakija.kysyMistaMinne();
                     break;
 
                 case 2:
-                    this.hakijaOlio.haeJunatLahtoasemanPerusteella();
+                    this.hakija.kysyLahtoasemaa();
                     break;
 
                 case 3:
@@ -69,4 +75,24 @@ public class Kayttoliittyma {
         System.out.println("\t4 = Hae junan tiedot");
         System.out.println("\t5 = Tulosta komennot");
     }
+
+    private void printtaaLogo(){
+        try {
+            Files.lines(Paths.get("logo.txt")).forEach(System.out::println);
+        } catch (IOException e) {
+            System.out.println("Virhe logon lukemisessa");
+        }
+    }
+
+    private void printtaaEsittely(){
+        try {
+            Files.lines(Paths.get("esittelyteksti.txt")).forEach(System.out::println);
+        } catch (IOException e) {
+            System.out.println("Virhe esittelyn lukemisessa");
+        }
+
+        System.out.println("PAINA ENTER");
+        lukija.nextLine();
+    }
+
 }
