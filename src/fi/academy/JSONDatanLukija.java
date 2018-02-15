@@ -22,7 +22,10 @@ public class JSONDatanLukija {
             ObjectMapper mapper = new ObjectMapper();
             CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junaLista = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
-            List<Juna> rajattuLista = junaLista.stream().filter(juna -> juna.getTimeTableRows().get(lahtemisenIndeksi(juna, mista)).getScheduledTime().after(kalenteri.getTime())).collect(Collectors.toCollection(ArrayList::new));
+            List<Juna> rajattuLista = junaLista.stream()
+                    .filter(juna -> juna.getTimeTableRows().get(lahtemisenIndeksi(juna, mista))
+                            .getScheduledTime().after(kalenteri.getTime()))
+                    .collect(Collectors.toCollection(ArrayList::new));
             return rajattuLista;
         } catch (MismatchedInputException e) {
             System.out.println("Suoraa junayhteyttä ei löydy!");
@@ -55,6 +58,42 @@ public class JSONDatanLukija {
 
             return rajatutJarjestyksessa;
         } catch (Exception ex){
+            System.out.println(ex);
+        }
+
+        return new ArrayList<>();
+    }
+
+    public List<Juna> lueDataPaivanMukaan(String mista, String minne, String aika, String paiva){
+
+        String vuosi = paiva.substring(6,10);
+        String kk = paiva.substring(3,5);
+        String p = paiva.substring(0,2);
+        String formatoituPaiva = vuosi + "-" + kk + "-" + p;
+
+        Calendar kalenteri = new GregorianCalendar();
+        kalenteri.set(Calendar.YEAR, Integer.parseInt(vuosi));
+        kalenteri.set(Calendar.MONTH, Integer.parseInt(paiva.substring(3,5))-1);
+        kalenteri.set(Calendar.DAY_OF_MONTH, Integer.parseInt(p));
+
+        kalenteri.set(Calendar.HOUR_OF_DAY, Integer.parseInt(aika.substring(0, 2)));
+        kalenteri.set(Calendar.MINUTE, Integer.parseInt(aika.substring(3, 5)));
+
+
+        String baseurl = "https://rata.digitraffic.fi/api/v1";
+        try {
+            URL url = new URL(URI.create(baseurl + "/live-trains/station/" + mista + "/" + minne + "?departure_date=" + formatoituPaiva).toASCIIString());
+            ObjectMapper mapper = new ObjectMapper();
+            CollectionType tarkempiListanTyyppi = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
+
+            List<Juna> junaLista = mapper.readValue(url, tarkempiListanTyyppi);  // pelkkä List.class ei riitä tyypiksi
+            List<Juna> rajattuLista = junaLista.stream()
+                    .filter(juna -> juna.getTimeTableRows().get(lahtemisenIndeksi(juna, mista)).getScheduledTime().after(kalenteri.getTime()))
+                    .collect(Collectors.toCollection(ArrayList::new));
+            return rajattuLista;
+        } catch (MismatchedInputException e) {
+            System.out.println("Suoraa junayhteyttä ei löydy!");
+        } catch (Exception ex) {
             System.out.println(ex);
         }
 

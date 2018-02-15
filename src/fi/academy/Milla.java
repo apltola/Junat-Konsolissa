@@ -15,7 +15,7 @@ import java.util.Scanner;
 import static java.util.Collections.replaceAll;
 
 //Milla koodaa junien hakua junan numeron perusteella
-public class Milla  extends Hakija{
+public class Milla  extends UusiHakija{
 
     public static void main(String[] args) {
         new Milla().haeNumeronPerusteella(); }
