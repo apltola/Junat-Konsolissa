@@ -1,26 +1,13 @@
 package fi.academy;
 
-// junien haku lähtöaseman perusteella.
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-
-public class Joni {
+public class JunaLogo {
 
 
     public static void main(String[] args) {
         //haeAsemanPerusteella();
-        Joni juna = new Joni();
+        JunaLogo juna = new JunaLogo();
 
         String[] veturi = {"               .---._\t\t\t\t\t\t\t\t\t\t",
                 "           .--(. '  .).--.      .  .-.  \t\t\t\t\t\t\t",
