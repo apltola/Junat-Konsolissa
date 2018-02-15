@@ -203,55 +203,321 @@ Sköldvik;SLD
 Savonlinna-Kauppatori;SLK
 Salo;SLO
 Suonenjoki;SNJ
+Sorsasalo;SOR
+Sorkia;SOT
+Sapra;SPA
+Sieppijärvi;SPJ
 Simpele;SPL
+Sahinpuro;SPO
+Sepänsalmi;SPS
+Sappu;SPU
+Selänpää;SPÄ
 Saari;SR
+Sairala;SRA
+Sortavalan satama;SRH
+Saarijärvi SRJ
+Saarijärvi kk;SRK
+Saarela;SRL
+Saramäki;SRM
+Suonperä;SRÄ
+Sääskiniemi;SSK
+Soso;SSO
+Salpausselkä;SSS
+Siltasuo;SSU
 Santala;STA
 Siuntio;STI
+Santalahti;STL
+Suistamo;STO
+Selantaus;STS
+Santti;STT
+Santamäki;STÄ
+Sisättö;STÖ
+Summa;SU
+Suhmura;SUH
+Suinula;SUI
+Suihkola;SUK
+Joensuu Sulkulahti;SUL
+Sulkujärvi;SULK
 Suolahti;SUO
+Suolahti satama;SUOS
+Survoneva;SUR
+Santavaihde;SV
+Saviharju;SVH
+Sievi;SVI
+Sauvamäki;SVK
+Suvalto;SVL
+Saviaho;SVO
+Savontalo Kouvola;SVT
+Säynätsalo;SY
+Syrjä;SYR
+Syväri;SYV
+Säkäniemi;SÄ
+Säkylä;SÄK
+Säämäjärvi;SÄM
+Särkilahti;SÄR
+Säynäjärvi;SÄY
+Sågars;SÅG
+Helsinki Sörnäinen;SÖ
 Taavetti;TA
+Takoja;TAK
+Tammisto;TAM
+Tammisuo;TAMO
+Tapavainola;TAP
+Trollböle;TBÖ
+Taipale;TE
+Tehtaanmäki;TEH
+Tennilä;TEN
+Tehtaanportti;TEP
+Tähtelä;TH
+Tehola;THL
+Tuohimutka;THM
+Tiihola;THO
+Tali;TI
+Tiensuu;TIS
+Tiusala;TIU
+Tiviä;TIV
+Terijoki;TJ
+Tuomioja;TJA
 Tervajoki;TK
+Tikkakallio;TKA
+Torkkeli;TKE
+Timankangas;TKG
+Tikkala;TKK
 Tikkurila;TKL
+Tikkurila k:TIK
+Tahkoluoto;TKO
+Tikanperä;TKP
+Tokkari;TKR
 Turku;TKU
+Turku tavara;TKUT
 Toijala;TL
+Tenkkula;TLA
 Taivalkoski;TLK
 Tammisaari;TMS
+Talma;TLM
+Talviniska;TLN
+Toijala s;TLS
+Talvivaara;TLV
+Tuomikylä;TMK
+Törmälä;TML
+Tammisaari;TMS
+Pieksamäki Temu;TMU
+Tuulimäki;TMÄ
 Tapanila;TNA
+Tani;TNI
+Tohmajärvi;TOH
+Toivala;TOI
+Toikkala;TOK
 Tolsa;TOL
+Tommola;TOM
+Torvinen;TON
 Tornio-Pohjoinen;TOP
 Tornio;TOR
+Tainiokoski;TOS
+Tikkaperä;TP
 Tampere;TPE
+Tampere r;TRE
 Tampereen tavara-asema;TPET
+Toppi;TPI
+Tupos;TPS
+Tuupovaara;TPV
+Torhola;TRH
+Tornio-Itäinen;TRI
+Torkkeli;TRK
 Tuomarila;TRL
+Tornio r;TRN
+Tornio-raja;TRR
+Tarsala;TRS
 Tervola;TRV
+Törölä;TRÄ
 Tavastila;TSL
+Tsolma;TSM
+Tasapää;TSP
+Tuokslahti;TST
+Tervasuo;TSU
+Tiituspohja;TTP
+Tytyri;TTR
 Turenki;TU
+Oulu Tuira;TUA
+Tuuloksenjoki;TUJ
+Turku;TUR
 Turku satama;TUS
 Tuuri;TUU
+Teuva;TUV
+Talviainen;TV
+Tuovila;TVL
+Tyrisevä;TYR
+Tyris;TYS
+Töysä;TÖ
+Törmä;TÖR
+Uhlu;UH
 Uimaharju;UIM
+Ukkola;UK
 Uusikaupunki;UKP
 Uusikylä;UKÄ
+Udelnaja;UL
+Upolahti;ULH
+Ulvila;ULV
+Unikankare;UNI
+Untamo;UNT
+Uro;UO
+Uusikaarlepyy;UPY
+Urjala;UR
+Uuras;URS
+Ulasoori;USO
+Uitti;UTI
 Utajärvi;UTJ
+Uuksu;UUK
+Uusi-Värtsilä;UVÄ
+Vuorten-Vuori;V-V
+Vuosaari;VS
 Vaala;VAA
+Viita-aho;VAH
+Vainikkala;VAI
+Vanaja;VAJ
+Vallila;VAL
+Vammeljoki;VAM
 Varkaus;VAR
+Vaasenin satama;VASS
+Vatiala;VAT
+Vehkala;VEH
+Veitsiluoto vaihde;VEI
+Vellua;VEL
+Veskelys;VES
+Vehmainen;VH
+Viuhonmäki;VHI
+Vuohijärvi;VHJ
+Vuohimäki;VHM
+Vuohenoja;VHO
+Valkeakoski;VI
 Viiala;VIA
 Vihtari;VIH
+Turku Viheriäinen;VIE
+Viisjärvi;VIJ
 Vika;VIK
+Vihtamo;VIM
+Vinnilä;VIN
+Virrat;VIR
+Vesijärvi;VJ
+Vedenoja;VJA
+Valkeajärvi;VJI
+Vuojoki;VJO
+Vahojärvi;VJR
+Vaatsjärvi;VJÄ
+Viekki;VK
+Tampere Viinikka;VKA
+Vähäkangas;VKG
+Vasikkahaka;VKH
+Venetmäki;VKI
+Vanikko;VKK
+Viinikkala;VLK
+Valkama;VKM
+Verkkoniemi;VKN
+Vaajakoski;VKO
 Vantaankoski;VKS
 Vuokatti;VKT
+Vaskuu;VKU
+Vähäkyrö;VKÖ
+Virkkala;VLA
+Villähde;VLH
+Vuolinko;VLK
+Vallainen;VLL
 Valtimo;VLM
 Vilppula;VLP
+Valtaala;VLT
+Villavaara;VLV
+Viima;VM
 Vammala;VMA
+Vetämäjärvi;VMJ
 Valimo;VMO
+Virkamies;VMS
+Vesanka uusi;VN
 Vainikkala;VNA
+Vainikkala-raja;VNAR
+Vainikkala tavara;VNAT
+Vinnilä vanha;VNI
 Viinijärvi;VNJ
+Veneskoski;VNK
+Vinkkilä;VNL
+Vuonos;VNS
+Viantie;VNT
+Voikoski;VOI
+Virenoja;VOJ
+Virenoja LWR;VOJA
+Voitoinen;VOT
+Viipuri;VPI
+Virpelä;VPL
+Varpanen;VPN
+Vehkapuro;VPU
+Vaarala;VRA
+Vihtavuori;VRI
+Viertola;VRK
+Vuorela JR;
+Värälä;VRL
+Vierumäki;VRM
+Varanen;VRN
 Vaasa;VS
+Vuosaari;VSA
+Vuosjärvi;VSJ
+Vaskiluoto;VSK
 Vuonislahti;VSL
+Valkeasuo;VSO
+Vaasan satama;VSS
+Vesta;VST
+Vuorensyrjä;VSY
+Voltti;VT
+Vatia;VTA
 Vihanti;VTI
+Vitele;VTL
+Vuolahti;VTL
+Viittamäki;VTM
+Viitana;VTN
+Vanattara;VTR
+Vitsakylä;VTS
+Ventälä;VTÄ
+Vuoksenniska;VUO
+Vartius.raja;VUR
 Vartius;VUS
+Vähäjoki;VÄJ
+Vähä;VÄ
+Välimäki;VÄL
+Välimaa;VÄM
+Välivaara;VÄV
+Vääkiö;VÖ
+Wasalandia;WAD
+Valkeasaari;WI
+Voitajoki;WJK
+Vesanka vanha;WN
+Voikkaa;WOA
+Wärtsilä;WRS
+Vuoksen satama;WUS
+Ylihärmä;YHM
+Yläkolkki;YKI
+Ykspihlaja;YKS
+Ykspihlaja tavara;YKST
+Ykspihlaja väliratapiha;YKSV
+Yli-Vojakkala;YLI
+Yläkoski;YLK
+Ylemmäinen;YLM
+Ylävalli;YLV
+Ylämylly;YLY
+Yltiä;YLÄ
+Ylöjärvi;YLÖ
+Ypykkävaara;YPY
 Ylistaro;YST
 Ylitornio;YTR
 Ylivieska;YV
+Ypäjä;YÄ
 Ähtäri;ÄHT
+Äkäsjoki;ÄJ
 Äänekoski;ÄKI
+Äänekosken keskusta;ÄKK
+Ämmälä;ÄLÄ
+Ämmänsaari;ÄM
+Änkilä;ÄNK
+Änislinna;ÄNL
+Äyräpää;ÄP
+Äijäri;ÄRI
 Äetsä;ÄS
+Äystö;ÄTÖ
 Pietari;PTR
