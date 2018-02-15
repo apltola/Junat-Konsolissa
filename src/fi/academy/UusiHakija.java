@@ -145,7 +145,51 @@ public class UusiHakija {
 
     }
 
+    public void tulostaSaapuvatJunatAsemalle(String minne){
+        List<Juna> junat = datanLukija.lueDataSaapumiasemalta(minne);
+        // System.out.println(datanLukija.lueDataSaapumiasemalta(minne));
 
+        int lukumaara = 10;
+        if (junat.size() < lukumaara) {
+            lukumaara = junat.size();
+        }
+
+        for (int i = 0; i < lukumaara; i++) {
+            Juna juna = junat.get(i);
+            int vikaAika = junat.get(i).getTimeTableRows().size()-1;
+
+            String tyyppi;
+
+            if (junat.get(i).getTrainCategory().equals("Commuter")) {
+                tyyppi = junat.get(i).getCommuterLineID();
+            } else {
+                tyyppi = junat.get(i).getTrainType() + junat.get(i).getTrainNumber();
+            }
+
+            String lahtopaikka = junat.get(i).getTimeTableRows().get(0).getStationShortCode();
+            String saapumisaika = juna.getTimeTableRows().get(datanLukija.saapumisenIndeksi(juna, minne)).getScheduledTime().toString().substring(11, 16);
+            String maaranpaa = junat.get(i).getTimeTableRows().get(vikaAika).getStationShortCode();
+            System.out.printf("%-10s %-10s %-10s %-10s \n", tyyppi, haeAsema(lahtopaikka), saapumisaika, haeAsema(maaranpaa));
+        }
+    }
+
+    public void kysySaapumisasemalta() {             // haetaan seuraavaksi lähtevää junaa
+        Scanner lukija = new Scanner(System.in);            // käyttäjän valitsemalta asemalta
+        System.out.println();
+        System.out.print("Anna saapumisasema: ");
+
+        String minne = virheSyotteidenKasittely(lukija, "Anna saapumisasema: ");
+
+        String juna="Juna";
+        String lahto="Lähtöpaika";
+        String saapuu="Saapumisaika";
+        String mihin= "Määränpää";
+
+        System.out.println("\nLadataan junia...");
+        System.out.println();
+        System.out.printf("%-10s %-10s %-10s %-10s \n", juna, lahto, saapuu, mihin  );
+        tulostaSaapuvatJunatAsemalle(minne);
+    }
 
 
 

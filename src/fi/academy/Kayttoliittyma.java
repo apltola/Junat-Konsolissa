@@ -53,6 +53,7 @@ public class Kayttoliittyma {
                     break;
 
                 case 3:
+                    this.hakija.kysySaapumisasemalta();
                     break;
 
                 case 4:
