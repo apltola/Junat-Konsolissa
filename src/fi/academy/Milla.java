@@ -23,9 +23,11 @@ public class Milla  extends Hakija{
         Scanner lukija = new Scanner(System.in);
         System.out.print("\nAnna junan numero: ");
         String junanNumero = lukija.nextLine();
+        int pelkkaNumero = Integer.parseInt(junanNumero.replaceAll("\\D", "").replaceAll("\\s", ""));
+
         String alkuUrl = "https://rata.digitraffic.fi/api/v1/";
         try {
-            URL urlLiike = new URL(alkuUrl + "trains/latest/" + junanNumero);
+            URL urlLiike = new URL(alkuUrl + "trains/latest/" + pelkkaNumero);
             ObjectMapper mapper = new ObjectMapper();
             CollectionType millan = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
             List<Juna> junaLista = mapper.readValue(urlLiike, millan);
@@ -34,7 +36,7 @@ public class Milla  extends Hakija{
                 System.out.println("\nJuna ei ole tällä hetkellä liikkeessä");
             } else {
                 try {
-                    URL urlAsemat = new URL(alkuUrl + "train-tracking/latest/" + junanNumero + "?version=1000");
+                    URL urlAsemat = new URL(alkuUrl + "train-tracking/latest/" + pelkkaNumero + "?version=1000");
                     ObjectMapper mapperUusi = new ObjectMapper();
                     CollectionType millanUusi = mapperUusi.getTypeFactory().constructCollectionType(ArrayList.class, Juna.class);
                     List<Juna> junaUusiLista = mapperUusi.readValue(urlAsemat, millanUusi);
@@ -54,4 +56,6 @@ public class Milla  extends Hakija{
             System.out.println("\nTuntematon junan numero"); }
 
 
-}}
+}
+
+}
