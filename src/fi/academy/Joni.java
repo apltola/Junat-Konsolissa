@@ -16,11 +16,42 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Joni {
+
+
     public static void main(String[] args) {
         //haeAsemanPerusteella();
+        Joni juna = new Joni();
+
+        String[] veturi = {"               .---._\t\t\t\t\t\t\t\t\t\t",
+                "           .--(. '  .).--.      . .-.  \t\t\t\t\t\t\t",
+                "         . ( ' _) .)` (   .)-. ( ) '-'\t\t\t\t\t\t\t",
+                "       ( ,  ).        `(' . _)\t\t\t\t\t\t\t\t",
+                "      (')   _________      '-'\t\t\t\t\t\t\t\t\t",
+                "     ____ [_________]                                        ________\t\t",
+                "     \\__/ | _ \\  ||    ,;,;,,                               [________]	",
+                "     _][__|(\")/__||  ,;;;;;;;;,   __________   __________   _| JUNA |_\t",
+                "    /             | |____      | |          | |  ___     | |      ____|\t",
+                "   (| .--.    .--.| |     ___  | |   |  |   | |      ____| |____      |\t",
+                "   /|/ .. \\~~/ .. \\_|_.-.__.-._|_|_.-:__:-._|_|_.-.__.-._|_|_.-.__.-._|\t",
+                "  /_|\\ '' /~~\\ '' /=+( o )( o )+==( o )( o )=+=( o )( o )+==( o )( o )=+=\t",
+                "='==+'-'=='-'Aino==+Aleksi=='-'Elina+='-'Joni===+='-'Milla=='-'==+=='-'=+'-'",
+        };
+
+
+        juna.tulosta(veturi);
     }
 
-}
+
+        public void tulosta(String[]veturi){
+            for (int i = 0; i < veturi.length; i++) {
+                System.out.println(veturi[i]);
+            }
+
+        }
+
+    }
+
+
 
 //    public void haeAsemanPerusteella() {             // haetaan seuraavaksi lähtevää junaa
 //        Scanner lukija = new Scanner(System.in);            // käyttäjän valitsemalta asemalta
