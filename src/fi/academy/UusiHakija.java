@@ -140,6 +140,11 @@ public class UusiHakija {
         return "VIRHE";
     }
 
+    public String muokkaaStringSyotetta(String syote) {
+        return syote.replaceAll("\\s","" ).replaceAll("\\d","" );
+
+    }
+
 
 
 

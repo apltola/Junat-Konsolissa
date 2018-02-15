@@ -140,7 +140,8 @@ public class Hakija {
         String mista;
         while (true) {
             if (lukija.hasNextLine()) {
-                mista = haeAsema(lukija.nextLine());
+            mista = haeAsema(lukija.nextLine());
+
 
                 if (mista.equals("VIRHE")) {
                     System.out.println("Asemaa ei löydy!");
@@ -158,6 +159,11 @@ public class Hakija {
             }
         }
         return mista;
+    }
+
+    public String muokkaaStringSyotetta(String syote) {
+        return syote.replaceAll("\\s","" ).replaceAll("\\d","" );
+
     }
 
     public String haeAsema(String asema) {
@@ -181,10 +187,7 @@ public class Hakija {
         return "VIRHE";
     }
 
-    public void muokkaaStringSyotetta(String syote) {
-        syote.replaceAll("\\s","" ).replaceAll("\\d","" );
 
-    }
 //    public int haeIndeksi(List<Juna> lista, String lyhenne){
 //        for (int i = 0; i < lista.size(); i++) {
 //            List<TimeTableRow> ajat = lista.get(i).getTimeTableRows();
@@ -198,3 +201,4 @@ public class Hakija {
 //        return -1;
 //    }
 }
+
