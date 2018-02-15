@@ -19,6 +19,7 @@ public class Kayttoliittyma {
     public void kayta(){
 
         printtaaLogo();
+        printtaaJunanKuva();
         //printtaaEsittely();
 
         printtaaKomennot();
@@ -93,6 +94,19 @@ public class Kayttoliittyma {
 
         System.out.println("PAINA ENTER");
         lukija.nextLine();
+    }
+
+    private void printtaaJunanKuva(){
+        try {
+            Files.lines(Paths.get("junanKuva.txt")).forEach(System.out::println);
+        } catch (IOException e) {
+            System.out.println("Virhe kuvan lukemisessa");
+        }
+
+        System.out.print("\n\n\nPAINA ENTER: ");
+        this.lukija.nextLine();
+
+
     }
 
 }
