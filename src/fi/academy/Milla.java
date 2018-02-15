@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Milla  extends UusiHakija{
+public class Milla  extends Hakija {
 
     public static void main(String[] args) {
         new Milla().kysyJunannumero();
