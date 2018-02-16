@@ -13,8 +13,12 @@ public class JSONDatanLukija {
 
     public List<Juna> lueDataMistaMinne(String mista, String minne, String aika){
         Calendar kalenteri = new GregorianCalendar();
-        kalenteri.set(Calendar.HOUR_OF_DAY, Integer.parseInt(aika.substring(0, 2)));
-        kalenteri.set(Calendar.MINUTE, Integer.parseInt(aika.substring(3, 5)));
+        try {
+            kalenteri.set(Calendar.HOUR_OF_DAY, Integer.parseInt(aika.substring(0, 2)));
+            kalenteri.set(Calendar.MINUTE, Integer.parseInt(aika.substring(3, 5)));
+        } catch (NumberFormatException e) {
+            System.out.println("\nVirheellinen lähtöaika\n");
+        }
 
         String baseurl = "https://rata.digitraffic.fi/api/v1";
         try {

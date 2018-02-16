@@ -116,17 +116,36 @@ public class Hakija {
                     System.out.println("\nVirheellinen päivämäärä\n");
                 }
             }
-
-            System.out.print("Anna lähtoaika muodossa hh:mm --> ");
-            String aika = lukija.nextLine();
+            String aika;
+            while (true) {
+                try {
+                    System.out.print("Anna lähtoaika muodossa hh:mm --> ");
+                    aika = lukija.nextLine();
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Virheellinen lähtöaika");
+                    continue;
+                }
+            }
 
             System.out.println("\nLadataan junia...\n");
             System.out.printf("%-10s %-10s %-10s %-10s \n", "Juna", mistaPitka, minnePitka, "Matka-aika");
             tulostaPaivanMukaan(mista, minne, aika, paiva);
 
         } else {
-            System.out.print("Anna lähtoaika (muodossa hh:mm): ");
-            String lahtoAika = lukija.nextLine();
+
+            String lahtoAika;
+            while (true){
+                try {
+                    System.out.print("Anna lähtoaika muodossa hh:mm --> ");
+                    lahtoAika = lukija.nextLine();
+                    break;
+
+                } catch (NumberFormatException e){
+                    System.out.println("\nVirheellinen lähtöaika\n");
+                    continue;
+                }
+            }
 
             System.out.println("\nLadataan junia...");
             System.out.println();
