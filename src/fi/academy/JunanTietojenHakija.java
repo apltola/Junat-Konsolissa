@@ -63,7 +63,7 @@ public class JunanTietojenHakija extends Hakija {
                         seuraavaAsema = junaUusiLista.get(0).getNextStation();
                     if (junaUusiLista.get(0).getNextStation() == null)
                         seuraavaAsema = " ";
-                    System.out.println("\nVälillä: " + nykyinenAsema + " - " + seuraavaAsema);
+                    System.out.println("\nVälillä: " + nykyinenAsema + " -> " + seuraavaAsema);
 
                 } catch (Exception f){
                     System.out.println(f);
