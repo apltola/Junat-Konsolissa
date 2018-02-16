@@ -63,7 +63,7 @@ Epilä;EPÄ
 Etelä-Rekola;ERKL
 Ervelä;ERV
 Etelä-Savio;ESAV
-Eskilom ;ESK
+Eskilom;ESK
 Esso;ESSO
 Eura;EU
 Halli;EVJ
@@ -82,7 +82,6 @@ Hakasuo;HAS
 Hausjärvi tavara;HAS
 Haukipudas;HD
 Heikkilä;HEK
-Helsinki;HEL
 Hennala;HEN
 Hangonsaari;HGS
 Hinthaara;HH
@@ -313,7 +312,7 @@ Karila;KAR
 Karviainen;KAR
 Karanmäki;KARA
 Karhumäki;KARH
-Karkkila ;KARK
+Karkkila;KARK
 Karppila;KARP
 Korkeakoski;KAS
 Katajanokka;KAT
@@ -342,7 +341,7 @@ Kevola;KEW
 Kellomäki;KEÄ
 Kangasala;KG
 Kangaslampi;KGL
-Kuggom ;KGM
+Kuggom;KGM
 Kangas;KGS
 Kauhava;KHA
 Karhukangas;KHG
@@ -609,7 +608,7 @@ Lautakangas;LKG
 Laikko;LKK
 Lelkola;LKL
 Lamminkylä;LKY
-Läyliäinen ;LL
+Läyliäinen;LL
 Laurila;LLA
 Lielahti;LLH
 Loimaa;LM
@@ -672,7 +671,7 @@ Lohiluoma;LUO
 Lusto;LUS
 Leukaluut;LUT
 Loviisa;LVA
-Loviisa ;LVA
+Loviisa;LVA
 Lavapuro;LVP
 Loviisan satama;LVS
 Lievestuore;LVT
@@ -799,16 +798,16 @@ Myyrmäki;MYR
 Myllykangas;MYS
 Mynttilä;MYT
 Myrskylä;MYÄ
-Myrskylä ;MYÄ
+Myrskylä;MYÄ
 Mäkkylä;MÄK
-Mäkelä;	ÄL
+Mäkelä;ÄL
 Mänttä;MÄN
 Mätäsvaara;MÄS
 Nahkola;NAH
 Naistenjärvi;NAJ
 Nakkila;NAL
 Neste;NES
-Hunsala ;NHNS
+Hunsala;NHNS
 Niesa;NIE
 Niinimaa;NII
 Nikkarila;NIK

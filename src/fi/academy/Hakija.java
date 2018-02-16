@@ -46,7 +46,15 @@ public class Hakija {
 
         for (int i = 0; i < lukumaara; i++) {
             Juna juna = junat.get(i);
-            String tyyppi = juna.getTrainType() + juna.getTrainNumber();
+            //String tyyppi = juna.getTrainType() + juna.getTrainNumber();
+
+            String tyyppi;
+            if (juna.getTrainType().equals("HL")){
+                tyyppi = juna.getCommuterLineID();
+            } else {
+                tyyppi = juna.getTrainType() + juna.getTrainNumber();
+            }
+
             String lahtoaika = juna.getTimeTableRows().get(datanLukija.lahtemisenIndeksi(juna, mista)).getScheduledTime().toString().substring(11, 16);
             String saapumisaika = juna.getTimeTableRows().get(datanLukija.saapumisenIndeksi(juna, minne)).getScheduledTime().toString().substring(11, 16);
 
