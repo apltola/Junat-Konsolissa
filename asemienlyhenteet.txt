@@ -587,7 +587,6 @@ Leino;LEI
 Lentoasema;LEN
 Lieto;LEO
 Leppälahti;LEP
-Lahti;LH
 Lahnaslampi;LHN
 Lapinaho;LHO
 Lahdenpohja;LHP
