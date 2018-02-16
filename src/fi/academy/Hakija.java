@@ -100,8 +100,17 @@ public class Hakija {
         }
 
         if (valinta == 0){
-            System.out.print("Anna lähtöjen päivämäärä muodossa pp.kk.vvvv --> ");
-            String paiva = lukija.nextLine();
+            String paiva;
+            while (true) {
+                System.out.print("Anna lähtöjen päivämäärä muodossa pp.kk.vvvv --> ");
+                paiva = lukija.nextLine();
+                if (paiva.length() < 10 || paiva.length() > 10){
+                    System.out.println("\nVirheellinen päivämäärä\n");
+                    continue;
+                } else {
+                    break;
+                }
+            }
 
             System.out.print("Anna lähtoaika muodossa hh:mm --> ");
             String aika = lukija.nextLine();
@@ -188,7 +197,7 @@ public class Hakija {
         String mista;
         while (true) {
             if (lukija.hasNextLine()) {
-                mista = haeAsema(lukija.nextLine().replaceAll("\\D", "").replaceAll("\\s", ""));
+                mista = haeAsema(lukija.nextLine().replaceAll("\\d", "").replaceAll("\\s", ""));
 
                 if (mista.equals("VIRHE")) {
                     System.out.println("Asemaa ei löydy!");
