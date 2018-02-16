@@ -945,13 +945,13 @@ Joensuu Peltola;PLT
 Pohjois-Louko;PLU
 Pihlava;PLV
 Päivölä;PLÄ
-Pieksamäki;PM
-Pieksamäki p;PIE
+Pieksämäki;PM
+Pieksämäki p;PIE
 Parkkima;OMA
 Peltosalmi;PMI
 Pukinmäki;PMK
-Pieksamäki lajittelu;PMLA
-Pieksamäen tavara-asema;PMT
+Pieksämäki lajittelu;PMLA
+Pieksämäen tavara-asema;PMT
 Pohjamäki;PMÄ
 Panelia;PN
 Pennala;PNA
