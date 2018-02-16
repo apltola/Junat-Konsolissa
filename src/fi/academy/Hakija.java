@@ -188,7 +188,7 @@ public class Hakija {
         String mista;
         while (true) {
             if (lukija.hasNextLine()) {
-                mista = haeAsema(lukija.nextLine());
+                mista = haeAsema(lukija.nextLine().replaceAll("\\D", "").replaceAll("\\s", ""));
 
                 if (mista.equals("VIRHE")) {
                     System.out.println("Asemaa ei löydy!");
