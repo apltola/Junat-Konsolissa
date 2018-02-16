@@ -102,13 +102,18 @@ public class Hakija {
         if (valinta == 0){
             String paiva;
             while (true) {
-                System.out.print("Anna lähtöjen päivämäärä muodossa pp.kk.vvvv --> ");
-                paiva = lukija.nextLine();
-                if (paiva.length() < 10 || paiva.length() > 10){
+
+                try {
+                    System.out.print("Anna lähtöjen päivämäärä muodossa pp.kk.vvvv --> ");
+                    paiva = lukija.nextLine();
+                    if (paiva.length() < 10 || paiva.length() > 10){
+                        System.out.println("\nVirheellinen päivämäärä\n");
+                        continue;
+                    } else {
+                        break;
+                    }
+                } catch (Exception e) {
                     System.out.println("\nVirheellinen päivämäärä\n");
-                    continue;
-                } else {
-                    break;
                 }
             }
 
