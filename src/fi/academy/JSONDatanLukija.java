@@ -17,7 +17,7 @@ public class JSONDatanLukija {
             kalenteri.set(Calendar.HOUR_OF_DAY, Integer.parseInt(aika.substring(0, 2)));
             kalenteri.set(Calendar.MINUTE, Integer.parseInt(aika.substring(3, 5)));
         } catch (NumberFormatException e) {
-            System.out.println("\nVirheellinen lähtöaika\n");
+            System.out.println("\nVirheellinen lähtöaika, toivottavasti ei ole kiire mihinkään meinaan tällä tahdilla voi tovi tässä vierähtää...\n");
         }
 
         String baseurl = "https://rata.digitraffic.fi/api/v1";
@@ -38,7 +38,7 @@ public class JSONDatanLukija {
 
             return listaIlmanTavarajunia;
         } catch (MismatchedInputException e) {
-            System.out.println("Suoraa junayhteyttä ei löydy!");
+            System.out.println("Suoraa junayhteyttä ei löydy, mutta busseja voi löytyä epätoivoiselle!");
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -106,7 +106,7 @@ public class JSONDatanLukija {
                     .collect(Collectors.toCollection(ArrayList::new));
             return rajattuLista;
         } catch (MismatchedInputException e) {
-            System.out.println("Suoraa junayhteyttä ei löydy!");
+            System.out.println("Suoraa junayhteyttä ei löydy, mutta busseja voi löytyä jos luoja suo!");
         } catch (Exception ex) {
             System.out.println(ex);
         }

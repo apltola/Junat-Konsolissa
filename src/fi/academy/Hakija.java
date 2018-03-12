@@ -43,7 +43,6 @@ public class Hakija {
             lukumaara = junat.size();
         }
 
-
         for (int i = 0; i < lukumaara; i++) {
             Juna juna = junat.get(i);
             //String tyyppi = juna.getTrainType() + juna.getTrainNumber();
@@ -70,7 +69,6 @@ public class Hakija {
             System.out.printf("%-10s %-10s %-10s %-10s \n", tyyppi, lahtoaika, saapumisaika, matkaaika);
         }
     }
-
 
 
     public void kysyMistaMinne(){
